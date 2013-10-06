@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>octocard</title>
+</head>
+<body>
+    <div id="octocard"></div>
+    <style type="text/css">
+    #octocard {
+        margin: 50px auto 0;
+        width: 300px;
+    }
+    </style>
+    <script>
+    OCTOCARD = {
+        name: 'zmmbreeze',
+        modules: 'base,details,stats,repos,orgs,eventsStatis',
+        reposNum: 4,
+        orgsNum: 3,
+        api: 'http://localhost:8080/api'
+    };
+    </script>
+    <script src="src/octocard.js"></script>
+</body>
+</html>

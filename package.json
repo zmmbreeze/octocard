@@ -1,0 +1,38 @@
+{
+  "name": "octocard",
+  "version": "0.1.0",
+  "description": "Highly flexible github info card for every github lover.",
+  "preferGlobal": true,
+  "directories": {
+    "lib": "./src",
+    "bin": "./bin"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zmmbreeze/octocard.git"
+  },
+  "bugs": {
+    "url": "https://github.com/zmmbreeze/octocard/issues"
+  },
+  "keywords": [
+    "octocard",
+    "github",
+    "card"
+  ],
+  "author": "MZhou <zmmbreeze0825@gmail.com> (http://mzhou.me)",
+  "license": {
+    "type": "MIT",
+    "url": "https://raw.github.com/zmmbreeze/octocard/master/MIT-LICENTSE.txt"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-uglify": "*",
+    "grunt-contrib-jshint": "*",
+    "grunt-contrib-watch": "*",
+    "grunt-contrib-concat": "*",
+    "grunt-contrib-clean": "*"
+  }
+}
+
