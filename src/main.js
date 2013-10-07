@@ -14,19 +14,19 @@ var Octocard = function () {
  *
  * @param {Object=} config
  *          OCTOCARD = {
- *              // [optional][string]
- *              // username or repo name, 'github' as default
+ *              // [required][string]
+ *              // username
  *              name: 'zmmbreeze',
  *              // [optional][string|Element]
  *              // element or elementId, 'octocard' as default
  *              element: 'octocard',
  *              // [optional][string]
  *              // module names, default is
- *              // 'base,details,stats,repos,calendar-graph,orgs'
+ *              // 'base,details,stats,repos,eventsStatis,orgs'
  *              modules: 'base',
  *              // [optional][number]number of organizations to show
  *              // '-1' as default, show all organizations
- *              orgsNum: 3,
+ *              orgsNum: -1,
  *              // [optional][number]number of repos to show
  *              // '3' as default
  *              reposNum: 3,
@@ -72,7 +72,7 @@ Octocard.prototype.reload = function (config) {
 
     // setup modules
     var moduleNames = config.modules ||
-        'base,details,stats,repos,contributions,orgs';
+        'base,details,stats,repos,eventsStatis,orgs';
     moduleNames = moduleNames.split(',');
     this.setupModules(moduleNames);
 };
