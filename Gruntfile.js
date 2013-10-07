@@ -42,7 +42,7 @@ module.exports = function(grunt) {
       },
       dist: {
         files: {
-          'bin/octocard.<%= pkg.version %>.js': ['<%= concat.dist.dest %>']
+          'bin/octocard.js': ['<%= concat.dist.dest %>']
         }
       }
     },
