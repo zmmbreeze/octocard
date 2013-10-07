@@ -47,7 +47,7 @@ Octocard.prototype.reload = function (config) {
     config = config || OCTOCARD || {};
     this.config = config;
 
-    config.api = config.api || 'http://octocard.com/api';
+    config.api = config.api || 'http://octocard.info/api';
 
     // setup element & elementId
     this.element = config.element || 'octocard';
