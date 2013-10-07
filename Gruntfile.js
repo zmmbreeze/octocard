@@ -4,9 +4,13 @@
  * @param {Function} grunt .
  */
 module.exports = function(grunt) {
+  var theme = grunt.option('theme');
+  var suffix = (typeof theme !== 'string') ? '' : ('.' + theme);
+
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
-    theme: grunt.option('theme') || 'default',
+    theme: theme || 'default',
+    suffix: suffix,
     concat: {
       options: {
         separator: '\n',
@@ -31,7 +35,7 @@ module.exports = function(grunt) {
             'src/module/*.js',
             'src/main.js'
         ],
-        dest: 'src/octocard.js'
+        dest: 'src/octocard<%= suffix %>.js'
       }
     },
     uglify: {
@@ -42,7 +46,7 @@ module.exports = function(grunt) {
       },
       dist: {
         files: {
-          'bin/octocard.js': ['<%= concat.dist.dest %>']
+          'bin/octocard<%= suffix %>.js': ['<%= concat.dist.dest %>']
         }
       }
     },
