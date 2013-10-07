@@ -10,6 +10,9 @@
     font: 14px "Helvetica Neue", Arial, Helvetica, sans-serif;
     line-height: 1.5;
     border: 1px solid #CCC;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
     -webkit-box-shadow: 2px 2px 0 #E6E9ED;
     box-shadow: 2px 2px 0 #E6E9ED;
     -webkit-transition: all 0.5s ease;
