@@ -16,8 +16,10 @@ var orgsModule = function (card, callback) {
         return;
     }
 
-    var orgsNum = card.config.orgsNum || 3;
-    data = data.slice(0, orgsNum);
+    var orgsNum = card.config.orgsNum || -1;
+    if (orgsNum >= 0) {
+        data = data.slice(0, orgsNum);
+    }
 
     var liHtml = '';
     for (var i = 0, l = data.length; i < l; i++) {

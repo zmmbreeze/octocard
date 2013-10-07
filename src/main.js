@@ -21,20 +21,17 @@ var Octocard = function () {
  *              // element or elementId, 'octocard' as default
  *              element: 'octocard',
  *              // [optional][string]
- *              // user or repo
- *              type: 'user',
- *              // [optional][string]
  *              // module names, default is
  *              // 'base,details,stats,repos,calendar-graph,orgs'
  *              modules: 'base',
  *              // [optional][number]number of organizations to show
- *              // '3' as default
+ *              // '-1' as default, show all organizations
  *              orgsNum: 3,
  *              // [optional][number]number of repos to show
  *              // '3' as default
  *              reposNum: 3,
  *              // [optional][string]url of jsonp api
- *              // 'http://octocard.com/api' as default
+ *              // 'http://octocard.info/api' as default
  *              api: 'http://your-octocard.com/api'
  *          }
  */
@@ -71,7 +68,7 @@ Octocard.prototype.reload = function (config) {
 
     // setup username & type
     this.username = config.name || 'github';
-    this.type = config.type || 'user';
+    // this.type = config.type || 'user';
 
     // setup modules
     var moduleNames = config.modules ||
