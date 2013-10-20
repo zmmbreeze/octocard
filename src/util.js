@@ -1,5 +1,6 @@
 /*jshint laxbreak:true */
 
+var dateReg = /(\d{4})-(\d{2})-(\d{2})T/;
 var util = {
     /**
      * Insert css text.
@@ -227,5 +228,71 @@ var util = {
         date.setHours(0);
         date.setSeconds(0);
         return date;
+    },
+    /**
+     * test same day.
+     *
+     * @param {Date} d1 date one.
+     * @param {Date} d2 date two.
+     * @return {boolean} is the same day.
+     */
+    isSameDay: function (d1, d2) {
+        return d1.toDateString() === d2.toDateString();
+    },
+    /**
+     * Get today, time is '00:00:00'
+     *
+     * @return {Date} today.
+     */
+    today: function () {
+        return util.resetTime(new Date());
+    },
+    /**
+     * next day, time is '00:00:00'
+     *
+     * @return {Date} next day.
+     */
+    nextDay: function (cur) {
+        return new Date(cur.getTime() + 86400000);
+    },
+    /**
+     * tomorrow, time is '00:00:00'
+     *
+     * @return {Date} tomorrow.
+     */
+    tomorrow: function () {
+        return util.nextDay(util.today());
+    },
+    /**
+     * time string to date
+     *
+     * @param {string} str time string.
+     * @return {Date} date .
+     */
+    strToDate: function (str) {
+        var r = str.match(dateReg);
+        var d = new Date();
+        d.setFullYear(r[1]);
+        d.setMonth(r[2]);
+        d.setDate(r[3]);
+        d.setMilliseconds(0);
+        d.setMinutes(0);
+        d.setHours(0);
+        d.setSeconds(0);
+        return d;
+    },
+    /**
+     * time string to date string
+     *
+     * @param {string} str time string.
+     * @return {string} date string .
+     */
+    strToDateStr: function (str) {
+        var r = str.match(dateReg);
+        var d = new Date();
+        d.setFullYear(r[1]);
+        d.setMonth(r[2]);
+        d.setDate(r[3]);
+        return d.toDateString();
     }
 };

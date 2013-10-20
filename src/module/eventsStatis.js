@@ -24,40 +24,48 @@ var eventsStatisModule = function (card, callback) {
     var result = [];
     var date;
     var nextDate;
-    for (; i >= 0; i--) {
-        d = data[i];
-        maxCounter = Math.max(maxCounter, d.counter);
-        result.push(d);
-
-        if (i === 0) {
-            break;
-        }
-
-        date = util.resetTime(new Date(d.date));
+    // fill the empty date
+    var fillDate = function (endDate) {
         // 24 * 3600 * 1000 = 86400000
         date = new Date(86400000 + date.getTime());
-        nextDate = util.resetTime(new Date(data[i - 1].date));
-        while (date < nextDate) {
+        while (date < endDate) {
             result.push({
                 date: date,
                 counter: 0
             });
             date = new Date(86400000 + date.getTime());
         }
+    };
+    for (; i >= 0; i--) {
+        d = data[i];
+        maxCounter = Math.max(maxCounter, d.counter);
+        date = util.strToDate(d.date);
+        result.push({
+            date: date,
+            counter: d.counter
+        });
+
+        if (i === 0) {
+            break;
+        }
+        nextDate = util.strToDate(data[i - 1].date);
+        fillDate(nextDate);
     }
+    var today = util.tomorrow();
+    fillDate(today);
 
     // generate event statistic map
     var html = '';
     i = 0;
     var l = result.length;
-    var width = 100 / l;
+    var width = (270 / l);
     for (; i < l; i++) {
         d = result[i];
         html += util.format(eventsStatisModule.MOD_BAR_HTML, {
-            date: new Date(d.date).toDateString(),
+            date: d.date.toDateString(),
             counter: d.counter,
             width: width,
-            height: (Math.max(1, d.counter) / maxCounter) * 100,
+            height: (d.counter / maxCounter) * 100,
             visibility: d.counter ? 'visible' : 'hidden'
         });
     }
@@ -67,8 +75,8 @@ var eventsStatisModule = function (card, callback) {
         'eventsStatis',
         util.format(eventsStatisModule.MOD_HTML, {
             map: html,
-            startDate: new Date(data[data.length - 1].date).toDateString(),
-            endDate: new Date(data[0].date).toDateString()
+            startDate: util.strToDateStr(data[data.length - 1].date),
+            endDate: util.today().toDateString()
         })
     );
     callback();
@@ -86,7 +94,7 @@ eventsStatisModule.MOD_HTML = ''
     +     '</span>'
     + '</div>';
 eventsStatisModule.MOD_BAR_HTML = ''
-    + '<a href="javascript:void(0);" style="width:#{width}%;">'
+    + '<a href="javascript:void(0);" style="width:#{width}px;">'
     +     '<div style="height:#{height}%;visibility:#{visibility};">'
     +         '#{date} - #{counter}'
     +     '</div>'
