@@ -61,7 +61,7 @@
     text-decoration: none;
 }
 #root-id a {
-    color: inherit;
+    color: #666;
     text-decoration: none;
     -webkit-transition: color 0.5s ease;
     transition: color 0.5s ease;
@@ -249,6 +249,7 @@
 }
 #root-id .octocard-m-repos a h2,
 #root-id .octocard-m-repos a p {
+    font-size: 14px;
     margin-right: 50px;
     white-space: nowrap;
     text-overflow: ellipsis;
