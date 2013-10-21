@@ -327,8 +327,9 @@
 }
 #root-id .octocard-m-eventsStatis a {
     position: relative;
-    float: left;
-    min-width: 1px;
+    float: right;
+    margin-left: 1px;
+    width: 4px;
     height: 100%;
 }
 #root-id .octocard-m-eventsStatis a div {
@@ -343,9 +344,6 @@
     overflow: hidden;
     font-size: 12px;
     color: #888;
-}
-#root-id .octocard-m-eventsStatis-date-start {
-    float: left;
 }
 #root-id .octocard-m-eventsStatis-date-end {
     float: right;

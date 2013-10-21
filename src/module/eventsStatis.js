@@ -56,15 +56,12 @@ var eventsStatisModule = function (card, callback) {
 
     // generate event statistic map
     var html = '';
-    i = 0;
-    var l = result.length;
-    var width = (270 / l);
-    for (; i < l; i++) {
+    i = result.length - 1;
+    for (; i >= 0; i--) {
         d = result[i];
         html += util.format(eventsStatisModule.MOD_BAR_HTML, {
             date: d.date.toDateString(),
             counter: d.counter,
-            width: width,
             height: (d.counter / maxCounter) * 100,
             visibility: d.counter ? 'visible' : 'hidden'
         });
@@ -86,15 +83,12 @@ eventsStatisModule.MOD_HTML = ''
     + '<h2>Events statistic</h2>'
     + '<div class="octocard-m-eventsStatis-bd">#{map}</div>'
     + '<div class="octocard-m-eventsStatis-date">'
-    +     '<span class="octocard-m-eventsStatis-date-start">'
-    +         '#{startDate}'
-    +     '</span>'
     +     '<span class="octocard-m-eventsStatis-date-end">'
     +         '#{endDate}'
     +     '</span>'
     + '</div>';
 eventsStatisModule.MOD_BAR_HTML = ''
-    + '<a href="javascript:void(0);" style="width:#{width}px;">'
+    + '<a href="javascript:void(0);">'
     +     '<div style="height:#{height}%;visibility:#{visibility};">'
     +         '#{date} - #{counter}'
     +     '</div>'
