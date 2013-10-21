@@ -273,7 +273,7 @@ var util = {
         var r = str.match(dateReg);
         var d = new Date();
         d.setFullYear(r[1]);
-        d.setMonth(r[2]);
+        d.setMonth(r[2] - 1);
         d.setDate(r[3]);
         d.setMilliseconds(0);
         d.setMinutes(0);
@@ -291,7 +291,7 @@ var util = {
         var r = str.match(dateReg);
         var d = new Date();
         d.setFullYear(r[1]);
-        d.setMonth(r[2]);
+        d.setMonth(r[2] - 1);
         d.setDate(r[3]);
         return d.toDateString();
     }
