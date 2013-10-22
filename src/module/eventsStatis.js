@@ -57,11 +57,14 @@ var eventsStatisModule = function (card, callback) {
     // generate event statistic map
     var html = '';
     i = result.length - 1;
+    var barWidth = 100 / (i + 1);
     for (; i >= 0; i--) {
         d = result[i];
         html += util.format(eventsStatisModule.MOD_BAR_HTML, {
             date: d.date.toDateString(),
             counter: d.counter,
+            /* safari has the sub-pixel issue*/
+            width: barWidth,
             height: (d.counter / maxCounter) * 100,
             visibility: d.counter ? 'visible' : 'hidden'
         });
@@ -71,28 +74,26 @@ var eventsStatisModule = function (card, callback) {
     card.appendModHTML(
         'eventsStatis',
         util.format(eventsStatisModule.MOD_HTML, {
-            map: html,
-            startDate: util.strToDateStr(data[data.length - 1].date),
-            endDate: util.today().toDateString()
+            map: html
         })
     );
     callback();
 };
 
 eventsStatisModule.MOD_HTML = ''
-    + '<h2>Events statistic</h2>'
+    + '<h2>Events</h2>'
     + '<div class="octocard-m-eventsStatis-bd">#{map}</div>'
     + '<div class="octocard-m-eventsStatis-date">'
     +     '<span class="octocard-m-eventsStatis-date-end">'
-    +         '#{endDate}'
+    +         'Now'
     +     '</span>'
     + '</div>';
 eventsStatisModule.MOD_BAR_HTML = ''
-    + '<a href="javascript:void(0);">'
+    + '<div class="octocard-m-eventsStatis-bar" style="width:#{width}%;">'
     +     '<div style="height:#{height}%;visibility:#{visibility};">'
     +         '#{date} - #{counter}'
     +     '</div>'
-    + '</a>';
+    + '</div>';
 
 modules.add('eventsStatis', eventsStatisModule);
 
