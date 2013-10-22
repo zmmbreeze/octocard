@@ -328,6 +328,7 @@
 #root-id .octocard-m-eventsStatis-bar {
     position: relative;
     float: right;
+    min-width: 3px;
     height: 100%;
 }
 #root-id .octocard-m-eventsStatis-bar div {
