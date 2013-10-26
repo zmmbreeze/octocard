@@ -131,8 +131,8 @@
 
 /* module/base css */
 #root-id .octocard-m-base {
-   margin: -1em -1em 1em -1em;
-   padding: 1em;
+   margin: -1em -1em 10px -1em;
+   padding: 0.5em 1em;
    background-color: #EAEAEA;
    background-image: -moz-linear-gradient(#FAFAFA, #EAEAEA);
    background-image: -webkit-linear-gradient(#FAFAFA, #EAEAEA);
@@ -346,4 +346,15 @@
 }
 #root-id .octocard-m-eventsStatis-date-end {
     float: right;
+}
+
+
+/* module-footer */
+#root-id .ocotocard-footer {
+    display: block;
+    margin: -11px -1em -1em;
+    padding: 1px 1em;
+    text-align: center;
+    background: #EFEFEF;
+    border-top: 1px solid #CCC;
 }

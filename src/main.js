@@ -32,7 +32,10 @@ var Octocard = function () {
  *              reposNum: 3,
  *              // [optional][string]url of jsonp api
  *              // 'http://octocard.info/api' as default
- *              api: 'http://your-octocard.com/api'
+ *              api: 'http://your-octocard.com/api',
+ *              // [optional][boolean]show footer or not
+ *              // 'false' as default
+ *              noFooter: false
  *          }
  */
 Octocard.prototype.reload = function (config) {
@@ -74,6 +77,7 @@ Octocard.prototype.reload = function (config) {
     var moduleNames = config.modules ||
         'base,details,stats,repos,eventsStatis,orgs';
     moduleNames = moduleNames.split(',');
+    moduleNames.push('footer');
     this.setupModules(moduleNames);
 };
 
@@ -146,6 +150,7 @@ Octocard.prototype.createStyle = function (css) {
 Octocard.prototype.setupModules = function (moduleNames, callback) {
     var that = this;
     var l = loader(this.element);
+
     // load basic info and modules
     util.jsonp(
         this.config.api
