@@ -77,7 +77,7 @@ Octocard.prototype.reload = function (config) {
     var moduleNames = config.modules ||
         'base,details,stats,repos,eventsStatis,orgs';
     moduleNames = moduleNames.split(',');
-    moduleNames.push('footer');
+    moduleNames.unshift('footer');
     this.setupModules(moduleNames);
 };
 

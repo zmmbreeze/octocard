@@ -16,7 +16,7 @@ var footerModule = function (card, callback) {
     var link = document.createElement('a');
     link.href = 'http://octocard.info/';
     link.target = '_blank';
-    link.className = 'ocotocard-footer';
+    link.className = 'octocard-footer';
     link.innerHTML = 'Octocard.info';
     card.element.appendChild(link);
     callback();
