@@ -54,6 +54,13 @@ Octocard.prototype.reload = function (config) {
     if (typeof this.element === 'string') {
         this.elementId = this.element;
         this.element = document.getElementById(this.element);
+        if (!this.element) {
+            this.element = document.createElement('div');
+            this.element.id = this.elementId;
+            var scripts = document.getElementsByTagName('script');
+            var lastScript = scripts[scripts.length - 1];
+            lastScript.parentNode.insertBefore(this.element, lastScript);
+        }
     } else {
         if (this.element.id) {
             this.elementId = this.element.id;
