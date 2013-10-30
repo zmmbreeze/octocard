@@ -16,7 +16,7 @@ var orgsModule = function (card, callback) {
         return;
     }
 
-    var orgsNum = card.config.orgsNum || -1;
+    var orgsNum = parseInt(card.config.orgsNum, 10) || -1;
     if (orgsNum >= 0) {
         data = data.slice(0, orgsNum);
     }

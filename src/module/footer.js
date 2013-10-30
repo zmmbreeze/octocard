@@ -8,7 +8,7 @@
  */
 var footerModule = function (card, callback) {
     var noFooter = card.config.noFooter;
-    if (noFooter) {
+    if (noFooter && noFooter !== 'false') {
         callback();
         return;
     }

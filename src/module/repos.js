@@ -14,7 +14,7 @@ var reposModule = function (card, callback) {
     });
 
     //  get max reposNum
-    var reposNum = card.config.reposNum || 3;
+    var reposNum = parseInt(card.config.reposNum, 10) || 3;
     data = data.slice(0, reposNum);
 
     var html = '<ul>';

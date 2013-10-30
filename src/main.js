@@ -4,9 +4,10 @@
  * Github card
  *
  * @constructor
+ * @param {Object=} config
  */
-var Octocard = function () {
-    this.reload();
+var Octocard = function (config) {
+    this.reload(config);
 };
 
 /**
@@ -44,7 +45,7 @@ Octocard.prototype.reload = function (config) {
         this.element.innerHTML = '';
     }
 
-    config = config || OCTOCARD || {};
+    config = config || {};
     this.config = config;
 
     config.api = config.api || 'http://octocard.info/api';
@@ -57,8 +58,6 @@ Octocard.prototype.reload = function (config) {
         if (!this.element) {
             this.element = document.createElement('div');
             this.element.id = this.elementId;
-            var scripts = document.getElementsByTagName('script');
-            var lastScript = scripts[scripts.length - 1];
             lastScript.parentNode.insertBefore(this.element, lastScript);
         }
     } else {
@@ -77,7 +76,7 @@ Octocard.prototype.reload = function (config) {
     this.element.appendChild(style);
 
     // setup username & type
-    this.username = config.name || 'github';
+    this.username = config.name;
     // this.type = config.type || 'user';
 
     // setup modules
@@ -193,7 +192,55 @@ Octocard.prototype.setupModules = function (moduleNames, callback) {
     );
 };
 
-window.octocard = new Octocard();
+/**
+ * create octocard instance
+ *
+ * @param {Object} config .
+ */
+window.octocard = function (config) {
+    return new Octocard(config);
+};
+
+// autorun Octocard
+var autorunConfig;
+if (typeof OCTOCARD === 'object') {
+    // use `OCTOCARD`
+    autorunConfig = OCTOCARD;
+} else {
+    // get config from script tag
+    // eg:
+    //   <script
+    //     data-name="zmmbreeze"
+    //     data-modules="base,stats,repos,orgs,eventsStatis"
+    //     data-reposNum="3"
+    //     data-orgsNum="2"
+    //     data-element="OCTOCARD"
+    //     data-api="http://127.0.0.1:8080/api"
+    //     data-noFooter="false"
+    //     src="src/octocard.js"></script>
+    var scripts = document.getElementsByTagName('script');
+    var lastScript = scripts[scripts.length - 1];
+    if (!lastScript) {
+        return;
+    }
+    autorunConfig = {
+        name: '',
+        modules: '',
+        reposNum: '',
+        orgsNum: '',
+        element: '',
+        api: '',
+        noFooter: false
+    };
+    for (var key in autorunConfig) {
+        autorunConfig[key] = lastScript.getAttribute('data-' + key);
+    }
+}
+
+if (autorunConfig.name) {
+    // `name` is required as config
+    new Octocard(autorunConfig);
+}
 
 
 
