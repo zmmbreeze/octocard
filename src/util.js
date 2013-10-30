@@ -271,15 +271,7 @@ var util = {
      */
     strToDate: function (str) {
         var r = str.match(dateReg);
-        var d = new Date();
-        d.setFullYear(r[1]);
-        d.setMonth(r[2] - 1);
-        d.setDate(r[3]);
-        d.setMilliseconds(0);
-        d.setMinutes(0);
-        d.setHours(0);
-        d.setSeconds(0);
-        return d;
+        return new Date(r[1], r[2] - 1, r[3], 0, 0, 0, 0);
     },
     /**
      * time string to date string
@@ -289,10 +281,6 @@ var util = {
      */
     strToDateStr: function (str) {
         var r = str.match(dateReg);
-        var d = new Date();
-        d.setFullYear(r[1]);
-        d.setMonth(r[2] - 1);
-        d.setDate(r[3]);
-        return d.toDateString();
+        return new Date(r[1], r[2] - 1, r[3], 0, 0, 0, 0).toDateString();
     }
 };
