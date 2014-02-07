@@ -31,6 +31,9 @@ var Octocard = function (config) {
  *              // [optional][number]number of repos to show
  *              // '3' as default
  *              reposNum: 3,
+ *              // [optional][number]repos which will not be shown
+ *              // '' as default
+ *              reposIgnored: 'reponame1,reponame2',
  *              // [optional][string]url of jsonp api
  *              // 'http://octocard.info/api' as default
  *              api: 'http://your-octocard.com/api',
@@ -213,6 +216,7 @@ if (typeof OCTOCARD === 'object') {
     //     data-name="zmmbreeze"
     //     data-modules="base,stats,repos,orgs,eventsStatis"
     //     data-reposNum="3"
+    //     data-reposIgnored="reponame1,reponame2"
     //     data-orgsNum="2"
     //     data-element="OCTOCARD"
     //     data-api="http://127.0.0.1:8080/api"
@@ -227,6 +231,7 @@ if (typeof OCTOCARD === 'object') {
         name: '',
         modules: '',
         reposNum: '',
+        reposIgnored: '',
         orgsNum: '',
         element: '',
         api: '',

@@ -9,11 +9,7 @@ How to use
 Easy way? Copy the following html code to your website.
 
     <script
-        data-name="zmmbreeze"
-        <!--
-        Add or remove module which you want to show on your card.
-        data-modules="base,details,stats,repos,contributions,orgs"
-        -->
+        data-name="your github username"
         src="http://nodejs.in/octocard/bin/octocard.js"></script>
 
 Advanced way:
@@ -38,6 +34,10 @@ Advanced way:
       // `3` as default
       // reposNum: 4,
 
+      // [optional][number]repos which will not be shown
+      // '' as default
+      reposIgnored: 'reponame1,reponame2',
+
       // [optional][number] Number of organizations to be shown.
       // `-1` as default, represent showing all organizations.
       // orgsNum: -1,
@@ -53,6 +53,8 @@ Advanced way:
     };
     </script>
     <script src="http://nodejs.in/octocard/bin/octocard.js"></script>
+
+These configs also work as `data-*` attributes.
 
 How to customize theme
 ---
