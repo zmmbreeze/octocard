@@ -2,7 +2,7 @@ Octocard
 ===
 Highly flexible github info card for every github lover. And it's open source. Please feel free to fork and build your own Octocard.
 
-![screenshot](./screenshot.png)
+![screenshot](./images/screenshot.png)
 
 How to use
 ---
