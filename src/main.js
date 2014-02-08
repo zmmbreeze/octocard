@@ -68,6 +68,7 @@ Octocard.prototype.reload = function (config) {
             this.elementId = this.element.id;
         } else {
             this.elementId = 'octocard' + new Date().getTime();
+            this.element.id = this.elementId;
         }
     }
 
