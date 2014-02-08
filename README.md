@@ -39,7 +39,7 @@ Advanced way:
       reposIgnored: 'reponame1,reponame2',
 
       // [optional][number] Number of organizations to be shown.
-      // `-1` as default, represent showing all organizations.
+      // `Infinity` as default, represent showing all organizations.
       // orgsNum: -1,
 
       // [optional][string]url of jsonp api

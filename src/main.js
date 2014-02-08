@@ -26,7 +26,7 @@ var Octocard = function (config) {
  *              // 'base,details,stats,repos,eventsStatis,orgs'
  *              modules: 'base',
  *              // [optional][number]number of organizations to show
- *              // '-1' as default, show all organizations
+ *              // 'Infinity' as default, show all organizations
  *              orgsNum: -1,
  *              // [optional][number]number of repos to show
  *              // '3' as default
