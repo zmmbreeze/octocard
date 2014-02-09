@@ -11,3 +11,5 @@ Changelog
     * Fixed #5, default style add background-color
     * Fixed #8, support using `shadow dom` or `iframe` to create isolated container
     * Added `noIsolated` config
+    * `public_gists` => `gists`
+    * Fixed default theme's base module
