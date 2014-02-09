@@ -167,6 +167,7 @@ h1 {
     overflow: hidden;
     line-height: 28px;
     font-size: 20px;
+    white-space: nowrap;
     text-overflow: ellipsis;
     -webkit-transition: color 0.5s ease;
     transition: color 0.5s ease;
