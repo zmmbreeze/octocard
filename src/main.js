@@ -39,7 +39,11 @@ var Octocard = function (config) {
  *              api: 'http://your-octocard.com/api',
  *              // [optional][boolean]show footer or not
  *              // 'false' as default
- *              noFooter: false
+ *              noFooter: false,
+ *              // [optional][boolean]
+ *              // Use `shadowDom/iframe` to create isolate container or not
+ *              // 'false' as default
+ *              data-noIsolated="true"
  *          }
  */
 Octocard.prototype.reload = function (config) {
@@ -70,6 +74,11 @@ Octocard.prototype.reload = function (config) {
             this.elementId = 'octocard' + new Date().getTime();
             this.element.id = this.elementId;
         }
+    }
+
+    // create isolated container if needed
+    if (!config.noIsolated || config.noIsolated === 'false') {
+        this._createContainer();
     }
 
     // setup style
@@ -104,12 +113,14 @@ Octocard.prototype._showErrorMsg = function (msg, moduleNames) {
     reloadLink.href = 'javascript:void(0)';
     reloadLink.innerHTML = 'Refresh';
     var that = this;
-    util.bind(reloadLink, 'click', function() {
+    util.bind(reloadLink, 'click', function () {
         that.element.removeChild(errorRoot);
+        that._updateContainerHeight();
         that.setupModules(moduleNames);
     });
     errorRoot.appendChild(reloadLink);
     this.element.appendChild(errorRoot);
+    this._updateContainerHeight();
 };
 
 /**
@@ -133,7 +144,9 @@ Octocard.prototype.loadModule = function (name, callback) {
  */
 Octocard.prototype.appendModHTML = function (name, html) {
     var modRoot = document.createElement('div');
-    modRoot.className = 'octocard-m octocard-m-' + name;
+    // make sure className is lowercase, because of safari's bug
+    // http://jsbin.com/yafog/3/edit
+    modRoot.className = 'octocard-m octocard-m-' + name.toLowerCase();
     modRoot.innerHTML = html;
     this.element.appendChild(modRoot);
 
@@ -156,10 +169,12 @@ Octocard.prototype.createStyle = function (css) {
  * setup modules.
  *
  * @param {Array.<string>} moduleNames .
+ * @param {Function} callback .
  */
 Octocard.prototype.setupModules = function (moduleNames, callback) {
     var that = this;
     var l = loader(this.element);
+    that._updateContainerHeight();
 
     // load basic info and modules
     util.jsonp(
@@ -180,6 +195,7 @@ Octocard.prototype.setupModules = function (moduleNames, callback) {
                         startLoadModule();
                     } else {
                         l.end();
+                        that._updateContainerHeight();
                         if (callback) {
                             callback();
                         }
@@ -194,6 +210,50 @@ Octocard.prototype.setupModules = function (moduleNames, callback) {
             that._showErrorMsg(msg, moduleNames);
         }
     );
+};
+
+
+/**
+ * create isolated container
+ */
+Octocard.prototype._createContainer = function () {
+    var trueRoot = document.createElement('div');
+    // if using shadow dom, same id will cause bug on opera 18.0
+    this.elementId += new Date().getTime();
+    trueRoot.id = this.elementId;
+
+    var shadowRoot = util.createShadowRoot(this.element);
+    if (shadowRoot) {
+        // support shadow root
+        shadowRoot.appendChild(trueRoot);
+    } else {
+        var iframe = document.createElement('iframe');
+        iframe.style.cssText = 'width:100%;height:0;'
+            + 'position:relative;top:0;left:0;right:0;bottom:0;'
+            + 'display:block;padding:0;margin:0;border:none;';
+        iframe.frameBorder = '0';
+        this.element.appendChild(iframe);
+        var doc = iframe.contentDocument || iframe.contentWindow.document;
+        doc.open();
+        doc.write('');
+        doc.close();
+
+        doc.body.style.cssText = 'overflow:hidden;margin:0;padding:0;';
+        doc.body.appendChild(trueRoot);
+        this.doc = doc;
+        this.isIsolated = true;
+        this.iframe = iframe;
+    }
+
+    this.element = trueRoot;
+};
+
+Octocard.prototype._updateContainerHeight = function () {
+    if (this.iframe) {
+        // update iframe height
+        var h = util.getPageHeight(this.doc);
+        this.iframe.style.height = h + 'px';
+    }
 };
 
 /**
@@ -221,6 +281,7 @@ if (typeof OCTOCARD === 'object') {
     //     data-orgsNum="2"
     //     data-element="OCTOCARD"
     //     data-api="http://127.0.0.1:8080/api"
+    //     data-noIsolated="true"
     //     data-noFooter="false"
     //     src="src/octocard.js"></script>
     var scripts = document.getElementsByTagName('script');
@@ -236,6 +297,7 @@ if (typeof OCTOCARD === 'object') {
         orgsNum: '',
         element: '',
         api: '',
+        noIsolated: false,
         noFooter: false
     };
     for (var key in autorunConfig) {

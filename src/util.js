@@ -282,5 +282,43 @@ var util = {
     strToDateStr: function (str) {
         var r = str.match(dateReg);
         return new Date(r[1], r[2] - 1, r[3], 0, 0, 0, 0).toDateString();
+    },
+    /**
+     * Get document page height
+     *
+     * @param {Document} doc document.
+     * @return {number} height
+     */
+    getPageHeight: function (doc) {
+        var scrollProp = 'scrollHeight';
+        var offsetProp = 'offsetHeight';
+        var element = doc.documentElement;
+        var body = doc.body;
+        return Math.max(
+            body[scrollProp],
+            body[offsetProp],
+            element[scrollProp],
+            element[offsetProp]
+        );
+    },
+    /**
+     * createShadowRoot
+     *
+     * @param {Element} div .
+     * @return {Element} shadow root.
+     */
+    createShadowRoot: function (div) {
+        if (typeof div.createShadowRoot === 'function') {
+            return div.createShadowRoot();
+        }
+
+        var prefixs = ['webkit', 'moz', 'ms'];
+        var method;
+        for (var i = 0, l = prefixs.length; i < l; i++) {
+            method = prefixs[i] + 'CreateShadowRoot';
+            if (typeof div[method] === 'function') {
+                return div[method]();
+            }
+        }
     }
 };

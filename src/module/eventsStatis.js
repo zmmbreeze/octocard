@@ -82,14 +82,14 @@ var eventsStatisModule = function (card, callback) {
 
 eventsStatisModule.MOD_HTML = ''
     + '<h2>Events</h2>'
-    + '<div class="octocard-m-eventsStatis-bd">#{map}</div>'
-    + '<div class="octocard-m-eventsStatis-date">'
-    +     '<span class="octocard-m-eventsStatis-date-end">'
+    + '<div class="octocard-m-eventsstatis-bd">#{map}</div>'
+    + '<div class="octocard-m-eventsstatis-date">'
+    +     '<span class="octocard-m-eventsstatis-date-end">'
     +         'Now'
     +     '</span>'
     + '</div>';
 eventsStatisModule.MOD_BAR_HTML = ''
-    + '<div class="octocard-m-eventsStatis-bar" style="width:#{width}%;">'
+    + '<div class="octocard-m-eventsstatis-bar" style="width:#{width}%;">'
     +     '<div style="height:#{height}%;visibility:#{visibility};">'
     +         '#{date} - #{counter}'
     +     '</div>'

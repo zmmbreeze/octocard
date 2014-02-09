@@ -8,12 +8,15 @@ How to use
 ---
 Easy way? Copy the following html code to your website.
 
+    ```html
     <script
         data-name="your github username"
         src="http://nodejs.in/octocard/bin/octocard.js"></script>
+    ```
 
 Advanced way:
 
+    ```html
     <div id="octocard"></div>
     <script>
     OCTOCARD = {
@@ -49,10 +52,16 @@ Advanced way:
 
       // [optional][boolean]show footer or not
       // 'false' as default
-      // noFooter: false
+      // noFooter: false,
+
+      // [optional][boolean]
+      // Use `shadowDom` or `iframe` to create isolate container or not
+      // 'false' as default
+      // data-noIsolated="true"
     };
     </script>
     <script src="http://nodejs.in/octocard/bin/octocard.js"></script>
+    ```
 
 These configs also work as `data-*` attributes.
 
