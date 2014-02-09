@@ -86,3 +86,7 @@ Octocard works on node server. You can use [octocard.info](http://octocard.info/
 
 
 
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/zmmbreeze/octocard/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
