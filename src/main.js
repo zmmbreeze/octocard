@@ -241,10 +241,10 @@ Octocard.prototype._createContainer = function () {
         doc.body.style.cssText = 'overflow:hidden;margin:0;padding:0;';
         doc.body.appendChild(trueRoot);
         this.doc = doc;
-        this.isIsolated = true;
         this.iframe = iframe;
     }
 
+    this.isIsolated = true;
     this.element = trueRoot;
 };
 
