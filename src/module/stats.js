@@ -29,7 +29,7 @@ statsModule.MOD_HTML = ''
     +     '<li>'
     +         '<a target="_blank" href="https://gist.github.com/#{login}">'
     +             '<strong>#{public_gists}</strong>'
-    +             '<span>public gists</span>'
+    +             '<span>gists</span>'
     +         '</a>'
     +     '</li>'
     + '</ul>';
