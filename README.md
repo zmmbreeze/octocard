@@ -57,7 +57,7 @@ OCTOCARD = {
   // [optional][boolean]
   // Use `shadowDom` or `iframe` to create isolate container or not
   // 'false' as default
-  // data-noIsolated="true"
+  // noIsolated: true
 };
 </script>
 <script src="http://nodejs.in/octocard/bin/octocard.js"></script>
