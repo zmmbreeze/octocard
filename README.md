@@ -8,60 +8,60 @@ How to use
 ---
 Easy way? Copy the following html code to your website.
 
-    ```html
-    <script
-        data-name="your github username"
-        src="http://nodejs.in/octocard/bin/octocard.js"></script>
-    ```
+```html
+<script
+    data-name="your github username"
+    src="http://nodejs.in/octocard/bin/octocard.js"></script>
+```
 
 Advanced way:
 
-    ```html
-    <div id="octocard"></div>
-    <script>
-    OCTOCARD = {
-      // [required][string] Username.
-      name: 'zmmbreeze',
+```html
+<div id="octocard"></div>
+<script>
+OCTOCARD = {
+  // [required][string] Username.
+  name: 'zmmbreeze',
 
-      // [optional][string|Element]
-      // element or elementId, `octocard` as default.
-      element: 'octocard',
+  // [optional][string|Element]
+  // element or elementId, `octocard` as default.
+  element: 'octocard',
 
-      // [optional][string]
-      // Used module names, default is:
-      //   `base,details,stats,repos,contributions,orgs`.
-      // You can change the order or remove module if you don't want.
-      // modules: 'base,details,stats,repos,orgs,eventsStatis',
+  // [optional][string]
+  // Used module names, default is:
+  //   `base,details,stats,repos,contributions,orgs`.
+  // You can change the order or remove module if you don't want.
+  // modules: 'base,details,stats,repos,orgs,eventsStatis',
 
-      // [optional][number] Number of repos to be shown.
-      // `3` as default
-      // reposNum: 4,
+  // [optional][number] Number of repos to be shown.
+  // `3` as default
+  // reposNum: 4,
 
-      // [optional][number]repos which will not be shown
-      // '' as default
-      reposIgnored: 'reponame1,reponame2',
+  // [optional][number]repos which will not be shown
+  // '' as default
+  reposIgnored: 'reponame1,reponame2',
 
-      // [optional][number] Number of organizations to be shown.
-      // `Infinity` as default, represent showing all organizations.
-      // orgsNum: -1,
+  // [optional][number] Number of organizations to be shown.
+  // `Infinity` as default, represent showing all organizations.
+  // orgsNum: -1,
 
-      // [optional][string]url of jsonp api
-      // `http://octocard.info/api` as default.
-      // If your use your own octocard-server, change it.
-      // api: 'http://your-octocard-server.com/api',
+  // [optional][string]url of jsonp api
+  // `http://octocard.info/api` as default.
+  // If your use your own octocard-server, change it.
+  // api: 'http://your-octocard-server.com/api',
 
-      // [optional][boolean]show footer or not
-      // 'false' as default
-      // noFooter: false,
+  // [optional][boolean]show footer or not
+  // 'false' as default
+  // noFooter: false,
 
-      // [optional][boolean]
-      // Use `shadowDom` or `iframe` to create isolate container or not
-      // 'false' as default
-      // data-noIsolated="true"
-    };
-    </script>
-    <script src="http://nodejs.in/octocard/bin/octocard.js"></script>
-    ```
+  // [optional][boolean]
+  // Use `shadowDom` or `iframe` to create isolate container or not
+  // 'false' as default
+  // data-noIsolated="true"
+};
+</script>
+<script src="http://nodejs.in/octocard/bin/octocard.js"></script>
+```
 
 These configs also work as `data-*` attributes.
 
