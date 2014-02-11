@@ -1,4 +1,4 @@
-/*jshint laxbreak:true */
+/*jshint laxbreak:true, eqnull:true */
 
 var dateReg = /(\d{4})-(\d{2})-(\d{2})T/;
 var util = {
@@ -44,7 +44,7 @@ var util = {
             var obj = _key;
             return tmpl.replace(_val || /#\{([^{}]+)\}/g, function(match, key) {
                 val = obj[key];
-                return (val !== undefined) ? ('' + val) : '';
+                return (val == null) ? '' : ('' + val);
             });
         }
     },

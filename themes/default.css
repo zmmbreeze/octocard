@@ -172,6 +172,10 @@
 #root-id .octocard-m-base a:hover h1 {
     color: #4A89DC;
 }
+#root-id .octocard-m-base .octocard-m-base-noname {
+    line-height: 48px;
+    font-size: 24px;
+}
 #root-id .octocard-m-base span {
     display: block;
     font-size: 16px;
