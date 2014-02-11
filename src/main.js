@@ -115,12 +115,12 @@ Octocard.prototype._showErrorMsg = function (msg, moduleNames) {
     var that = this;
     util.bind(reloadLink, 'click', function () {
         that.element.removeChild(errorRoot);
-        that._updateContainerHeight();
+        that._updateContainer();
         that.setupModules(moduleNames);
     });
     errorRoot.appendChild(reloadLink);
     this.element.appendChild(errorRoot);
-    this._updateContainerHeight();
+    this._updateContainer();
 };
 
 /**
@@ -174,7 +174,7 @@ Octocard.prototype.createStyle = function (css) {
 Octocard.prototype.setupModules = function (moduleNames, callback) {
     var that = this;
     var l = loader(this.element);
-    that._updateContainerHeight();
+    that._updateContainer();
 
     // load basic info and modules
     util.jsonp(
@@ -195,7 +195,7 @@ Octocard.prototype.setupModules = function (moduleNames, callback) {
                         startLoadModule();
                     } else {
                         l.end();
-                        that._updateContainerHeight();
+                        that._updateContainer();
                         if (callback) {
                             callback();
                         }
@@ -248,8 +248,15 @@ Octocard.prototype._createContainer = function () {
     this.element = trueRoot;
 };
 
-Octocard.prototype._updateContainerHeight = function () {
+Octocard.prototype._updateContainer = function () {
     if (this.iframe) {
+        var ua = navigator.userAgent;
+        if((ua.match(/iPhone/i)) || (ua.match(/iPad/i))) {
+            // Fixed iphone iframe bug
+            // update container width
+            var containerWidth = this.iframe.parentNode.offsetWidth;
+            this.doc.body.style.width = containerWidth + 'px';
+        }
         // update iframe height
         var h = util.getPageHeight(this.doc);
         this.iframe.style.height = h + 'px';
