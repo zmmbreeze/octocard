@@ -173,6 +173,13 @@ Octocard.prototype.createStyle = function (css) {
  */
 Octocard.prototype.setupModules = function (moduleNames, callback) {
     var that = this;
+
+    if (that.config.data) {
+        load(that.config.data);
+        return;
+    }
+
+    // loading
     var l = loader(this.element);
     that._updateContainer();
 
@@ -181,35 +188,41 @@ Octocard.prototype.setupModules = function (moduleNames, callback) {
         this.config.api
             + '?mods=' + moduleNames.join(',')
             + '&login=' + this.username,
-        // success
-        function (data) {
-            that.data = data;
-
-            // start loading modules in turn
-            var i = 0;
-            var length = moduleNames.length;
-            function startLoadModule() {
-                that.loadModule(moduleNames[i], function () {
-                    i++;
-                    if (i < length) {
-                        startLoadModule();
-                    } else {
-                        l.end();
-                        that._updateContainer();
-                        if (callback) {
-                            callback();
-                        }
-                    }
-                });
-            }
-            startLoadModule();
-        },
+        load,
         // error
         function (msg) {
-            l.end();
+            if (l) {
+                l.end();
+            }
             that._showErrorMsg(msg, moduleNames);
         }
     );
+
+    // success
+    function load(data) {
+        that.data = data;
+
+        // start loading modules in turn
+        var i = 0;
+        var length = moduleNames.length;
+        function startLoadModule() {
+            that.loadModule(moduleNames[i], function () {
+                i++;
+                if (i < length) {
+                    startLoadModule();
+                } else {
+                    if (l) {
+                        l.end();
+                    }
+                    that._updateContainer();
+                    if (callback) {
+                        callback();
+                    }
+                }
+            });
+        }
+        startLoadModule();
+    }
 };
 
 
