@@ -8,7 +8,9 @@
  */
 var baseModule = function (card, callback) {
     var base = card.data.base;
-    if (!base.name) {
+    if (!base.name || base.name === base.login) {
+        // If no name was set or name is login name
+        // then only show login name.
         base.name = base.name || base.login;
         base._nameClass = 'octocard-m-base-noname';
     } else {
