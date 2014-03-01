@@ -81,6 +81,8 @@ Octocard.prototype.reload = function (config) {
         this._createContainer();
     }
 
+    this._bindSizeClass();
+
     // setup style
     if (typeof THEME_CSS === 'undefined') {
         throw new Error('Theme css not found!');
@@ -261,6 +263,9 @@ Octocard.prototype._createContainer = function () {
     this.element = trueRoot;
 };
 
+/**
+ * update container height and width
+ */
 Octocard.prototype._updateContainer = function () {
     if (this.iframe) {
         var ua = navigator.userAgent;
@@ -274,6 +279,30 @@ Octocard.prototype._updateContainer = function () {
         var h = util.getPageHeight(this.doc);
         this.iframe.style.height = h + 'px';
     }
+};
+
+/**
+ * Bind size class.
+ */
+Octocard.prototype._bindSizeClass = function () {
+    var me = this;
+    util.addSizeClass(me.element);
+
+    if (me._binded) {
+        return;
+    }
+    me._binded = true;
+
+    var timeout;
+    util.bind(window, 'resize', function resize() {
+        if (timeout) {
+            clearTimeout(timeout);
+        }
+
+        timeout = setTimeout(function () {
+            util.addSizeClass(me.element);
+        }, 250);
+    });
 };
 
 /**

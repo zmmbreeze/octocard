@@ -49,13 +49,12 @@ var util = {
         }
     },
 
-    cacheKey: 'githubcard-data',
+    // cacheKey: 'githubcard-data',
     /**
      * Get JSONP call result cache.
      *
      * @param {string} url .
      * @return {Object} data.
-     */
     getJSONPCache: function (url) {
         var value = localStorage.getItem(util.cacheKey);
         if (value) {
@@ -82,6 +81,7 @@ var util = {
 
         return value.data;
     },
+     */
 
     /**
      * Set JSONP cache.
@@ -89,7 +89,6 @@ var util = {
      * @param {string} url url string.
      * @param {Object} data .
      * @param {number} hour cache last `n` hour.
-     */
     setJSONPCache: function (url, data, hour) {
         var value = localStorage.getItem(util.cacheKey);
         if (value) {
@@ -111,6 +110,7 @@ var util = {
 
         localStorage.setItem(util.cacheKey, JSON.stringify(value));
     },
+     */
 
     /**
      * jsonp
@@ -202,6 +202,7 @@ var util = {
 
         document.body.appendChild(script);
     },
+
     /**
      * bind event
      *
@@ -216,6 +217,7 @@ var util = {
             element.attachEvent('on' + event, callback);
         }
     },
+
     /**
      * reset time part of a date.
      *
@@ -229,16 +231,18 @@ var util = {
         date.setSeconds(0);
         return date;
     },
+
     /**
      * test same day.
      *
      * @param {Date} d1 date one.
      * @param {Date} d2 date two.
      * @return {boolean} is the same day.
-     */
     isSameDay: function (d1, d2) {
         return d1.toDateString() === d2.toDateString();
     },
+     */
+
     /**
      * Get today, time is '00:00:00'
      *
@@ -247,6 +251,7 @@ var util = {
     today: function () {
         return util.resetTime(new Date());
     },
+
     /**
      * next day, time is '00:00:00'
      *
@@ -255,6 +260,7 @@ var util = {
     nextDay: function (cur) {
         return new Date(cur.getTime() + 86400000);
     },
+
     /**
      * tomorrow, time is '00:00:00'
      *
@@ -263,6 +269,7 @@ var util = {
     tomorrow: function () {
         return util.nextDay(util.today());
     },
+
     /**
      * time string to date
      *
@@ -273,16 +280,7 @@ var util = {
         var r = str.match(dateReg);
         return new Date(r[1], r[2] - 1, r[3], 0, 0, 0, 0);
     },
-    /**
-     * time string to date string
-     *
-     * @param {string} str time string.
-     * @return {string} date string .
-     */
-    strToDateStr: function (str) {
-        var r = str.match(dateReg);
-        return new Date(r[1], r[2] - 1, r[3], 0, 0, 0, 0).toDateString();
-    },
+
     /**
      * Get document page height
      *
@@ -301,6 +299,7 @@ var util = {
             element[offsetProp]
         );
     },
+
     /**
      * createShadowRoot
      *
@@ -320,5 +319,39 @@ var util = {
                 return div[method]();
             }
         }
+    },
+
+    /**
+     * Get size class by width.
+     *
+     * @param {Element} root element.
+     */
+    addSizeClass: function (root) {
+        var width = root.offsetWidth;
+        var rules = [0, 240, 480];
+        var classMap = {
+            '480': 'octocard-max',
+            '240': 'octocard-mid',
+            '0': 'octocard-min'
+        };
+
+        var nextRule;
+        var rule;
+        for (var i = 0; i < rules.length; i++) {
+            rule = rules[i];
+            nextRule = rules[i + 1];
+            if (width >= rule && ((width < nextRule) || !nextRule)) {
+                break;
+            }
+        }
+
+        if (root.getAttribute('data-rule') == rule) {
+            return;
+        }
+
+        root.className =
+            root.className.replace(/(^| )octocard\-m[^ $]+/, '')
+            + ' ' + classMap[rule];
+        root.setAttribute('data-rule', rule);
     }
 };
