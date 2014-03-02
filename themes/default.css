@@ -224,6 +224,12 @@
 #root-id.octocard-min .octocard-m-details li:before {
     display: none;
 }
+/* max details */
+#root-id.octocard-max .octocard-m-details li {
+    float: left;
+    margin-right: 2%;
+    width: 48%;
+}
 
 
 /* module/orgs css */

@@ -12,17 +12,31 @@
         // test `noIsolated` config
         color: red;
     }
+    #octocard,
+    #octocard2,
+    #octocard3 {
+        margin-right: 1em !important;
+        float: left;
+    }
     #octocard {
-        margin: 0 auto;
+        width: 180px;
+    }
+    #octocard2 {
+        width: 240px;
+    }
+    #octocard3 {
         width: 480px;
     }
     </style>
     <div id="octocard"></div>
+    <div id="octocard2"></div>
+    <div id="octocard3"></div>
+    <!--
     <script>
     OCTOCARD = {
         name: 'zmmbreeze',
         reposNum: 3,
-        noIsolated: true,
+        noIsolated: true
     };
     </script>
     <script
@@ -31,7 +45,25 @@
         data-reposIgnored="slider.css"
         data-orgsNum="-1"
         data-noFooter="false"
-        data-noIsolated="1"
         src="bin/octocard.js"></script>
+    -->
+    <script src="bin/octocard.js"></script>
+    <script>
+    octocard({
+        name: 'zmmbreeze',
+        reposNum: 3,
+        noIsolated: true
+    });
+
+    octocard({
+        element: 'octocard2',
+        name: 'zmmbreeze'
+    });
+
+    octocard({
+        element: 'octocard3',
+        name: 'zmmbreeze'
+    });
+    </script>
 </body>
 </html>
