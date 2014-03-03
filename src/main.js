@@ -47,9 +47,9 @@ var Octocard = function (config) {
  *          }
  */
 Octocard.prototype.reload = function (config) {
-    if (this.element) {
+    if (this.host) {
         // loaded before
-        this.element.innerHTML = '';
+        this.host.innerHTML = '';
     }
 
     config = config || {};
@@ -76,6 +76,7 @@ Octocard.prototype.reload = function (config) {
         }
     }
 
+    this.host = this.element;
     // create isolated container if needed
     if (!config.noIsolated || config.noIsolated === 'false') {
         this._createContainer();
@@ -286,7 +287,7 @@ Octocard.prototype._updateContainer = function () {
  */
 Octocard.prototype._bindSizeClass = function () {
     var me = this;
-    util.addSizeClass(me.element);
+    util.addSizeClass(me.host, me.element);
 
     if (me._binded) {
         return;
@@ -300,7 +301,7 @@ Octocard.prototype._bindSizeClass = function () {
         }
 
         timeout = setTimeout(function () {
-            util.addSizeClass(me.element);
+            util.addSizeClass(me.host, me.element);
         }, 250);
     });
 };

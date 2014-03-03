@@ -324,10 +324,11 @@ var util = {
     /**
      * Get size class by width.
      *
-     * @param {Element} root element.
+     * @param {Element} hos host element.
+     * @param {Element} root root element maybe shadow dom.
      */
-    addSizeClass: function (root) {
-        var width = root.offsetWidth;
+    addSizeClass: function (host, root) {
+        var width = host.offsetWidth;
         var rules = [0, 240, 480];
         var classMap = {
             '480': 'octocard-max',
