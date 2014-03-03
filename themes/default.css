@@ -246,6 +246,7 @@
     list-style: none;
     float: left;
     margin-right: 4px;
+    margin-bottom: 4px;
 }
 #root-id .octocard-m-orgs li:last-child {
     margin-right: 0;
@@ -340,7 +341,6 @@
 #root-id .octocard-m-stats ul {
     margin: 0;
     padding: 0;
-    display: table;
     height: 42px;
     overflow: hidden;
     list-style: none;
@@ -387,7 +387,13 @@
 #root-id.octocard-min .octocard-m-stats a strong {
     font-size: 24px;
 }
+#root-id.octocard-min .octocard-m-stats li {
+    width: 50%;
+}
 /* max stats */
+#root-id.octocard-max .octocard-m-stats li {
+    width: 25%;
+}
 
 
 /* module/eventsStatis css */
