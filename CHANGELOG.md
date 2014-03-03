@@ -13,3 +13,11 @@ Changelog
     * Added `noIsolated` config
     * `public_gists` => `gists`
     * Fixed default theme's base module
+- 1.2.0
+    * Fixed #10 #11 #13
+    * Fixed iphone/ipad iframe width bug
+    * Added data config
+    * Updated base module style when loginName is equal to username
+    * Supported responsive design, added min and max style
+    * Added repo number to stats module
+    * Clear useless code
