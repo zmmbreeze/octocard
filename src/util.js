@@ -301,24 +301,48 @@ var util = {
     },
 
     /**
-     * createShadowRoot
+     * get ShadowRoot, if not existed then create it.
      *
      * @param {Element} div .
      * @return {Element} shadow root.
      */
-    createShadowRoot: function (div) {
-        if (typeof div.createShadowRoot === 'function') {
-            return div.createShadowRoot();
-        }
-
+    getShadowRoot: function (div) {
         var prefixs = ['webkit', 'moz', 'ms'];
-        var method;
+        var root;
         for (var i = 0, l = prefixs.length; i < l; i++) {
-            method = prefixs[i] + 'CreateShadowRoot';
-            if (typeof div[method] === 'function') {
-                return div[method]();
+            root = this._getShadowRoot(div, prefixs[i]);
+            if (root) {
+                return root;
             }
         }
+    },
+    _getShadowRoot: function (div, prefix) {
+        var methodName = 'createShadowRoot';
+        var rootName = 'shadowRoot';
+
+        if (prefix) {
+            methodName = prefix + util.capitalize(methodName);
+            rootName = prefix + util.capitalize(rootName);
+        }
+
+        if (typeof div[methodName] === 'function') {
+            root = div[rootName];
+            if (root) {
+                root.innerHTML = '';
+                return root;
+            }
+            return div[methodName]();
+        }
+    },
+
+    /**
+     * capitalize first letter.
+     *
+     * @param {string} str input.
+     * @return {string} result.
+     */
+    capitalize: function (str) {
+        return str.charAt(0).toUpperCase() + str.slice(1);
     },
 
     /**

@@ -238,7 +238,7 @@ Octocard.prototype._createContainer = function () {
     this.elementId += new Date().getTime();
     trueRoot.id = this.elementId;
 
-    var shadowRoot = util.createShadowRoot(this.element);
+    var shadowRoot = util.getShadowRoot(this.element);
     if (shadowRoot) {
         // support shadow root
         shadowRoot.appendChild(trueRoot);
