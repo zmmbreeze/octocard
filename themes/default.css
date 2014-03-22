@@ -314,13 +314,18 @@
     color: #999;
 }
 /* min repos */
+#root-id.octocard-min .octocard-m-repos a {
+    margin: 0.15em 0;   /* (1.5 - 1.2) / 2 = 0.15 */
+    line-height: 1.2;
+}
 #root-id.octocard-min .octocard-m-repos p {
     display: none;
 }
 #root-id.octocard-min .octocard-m-repos h2 {
-    margin-right: 1em;
-    display: inline;
     margin-right: 0.25em;
+    display: inline;
+    white-space: initial;
+    word-wrap: break-word;
 }
 #root-id.octocard-min .octocard-m-repos span {
     display: inline;
