@@ -326,12 +326,14 @@ var util = {
         }
 
         if (typeof div[methodName] === 'function') {
-            root = div[rootName];
+            var root = div[rootName];
             if (root) {
                 root.innerHTML = '';
                 return root;
             }
-            return div[methodName]();
+            root = div[methodName]();
+            root.resetStyleInheritance = true;
+            return root;
         }
     },
 
