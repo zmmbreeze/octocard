@@ -10,6 +10,13 @@ var reposModule = function (card, callback) {
     var i;
     var l;
     data = card.data.repos;
+
+    // if no repos, don't show this module
+    if (data.length === 0) {
+        callback();
+        return;
+    }
+
     // sort data by stars
     data.sort(function (a, b) {
         return b.watchers_count - a.watchers_count;
