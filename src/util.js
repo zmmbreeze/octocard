@@ -307,7 +307,7 @@ var util = {
      * @return {Element} shadow root.
      */
     getShadowRoot: function (div) {
-        var prefixs = ['webkit', 'moz', 'ms'];
+        var prefixs = ['', 'webkit', 'moz', 'ms'];
         var root;
         for (var i = 0, l = prefixs.length; i < l; i++) {
             root = this._getShadowRoot(div, prefixs[i]);
