@@ -1,7 +1,7 @@
 Changelog
 ---
 
-- 1.0
+- 1.0.0
     * init
 - 1.0.1
     * Fixed #1, supported `reposIgnored` config.
@@ -21,3 +21,7 @@ Changelog
     * Supported responsive design, added min and max style
     * Added repo number to stats module
     * Clear useless code
+- 1.3.0
+    * Fixed repo style on min style
+    * Removed global variable `root`
+    * Fixed #17, #18, #19
