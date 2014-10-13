@@ -35,7 +35,7 @@ var Octocard = function (config) {
  *              // '' as default
  *              reposIgnored: 'reponame1,reponame2',
  *              // [optional][string]url of jsonp api
- *              // 'http://octocard.info/api' as default
+ *              // 'http://octocard.in/api' as default
  *              api: 'http://your-octocard.com/api',
  *              // [optional][boolean]show footer or not
  *              // 'false' as default
@@ -55,7 +55,7 @@ Octocard.prototype.reload = function (config) {
     config = config || {};
     this.config = config;
 
-    config.api = config.api || 'http://octocard.info/api';
+    config.api = config.api || 'http://octocard.in/api';
 
     // setup element & elementId
     this.element = config.element || 'octocard';
