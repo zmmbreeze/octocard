@@ -1,0 +1,455 @@
+/* resert css */
+#root-id {
+    position: relative;
+    padding: 1em;
+    min-height: 40px;
+    margin: 0 2px 2px 0;
+    display: block;
+    color: #CFCFCF;
+    font: 14px "Helvetica Neue", Arial, Helvetica, sans-serif;
+    text-align: left;
+    line-height: 1.5;
+    border: 2px solid #333;
+    background-color: #333;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    border-radius: 4px;
+    overflow: hidden;
+}
+#root-id.octocard-min {
+    font-size: 12px;
+}
+#root-id span,
+#root-id img,
+#root-id ul,
+#root-id ol,
+#root-id h1,
+#root-id h2,
+#root-id li,
+#root-id p,
+#root-id div {
+    margin: 0;
+    padding: 0;
+    border: none;
+    float: none;
+    position: static;
+    overflow: hidden;
+    width: auto;
+    height: auto;
+    line-height: inherit;
+    color: inherit;
+    font-size: inherit;
+    font-weight: normal;
+    background: none;
+}
+#root-id h1,
+#root-id h2 {
+    color: #88d5c2;
+    font-weight: bold;
+}
+#root-id li {
+    list-style: none;
+}
+#root-id p,
+#root-id div,
+#root-id img {
+    display: block;
+}
+#root-id a,
+#root-id span {
+    display: inline;
+    font-size: inherit;
+    text-decoration: none;
+}
+#root-id a {
+    color: #CFCFCF;
+    text-decoration: none;
+    -webkit-transition: color 0.5s ease;
+    transition: color 0.5s ease;
+}
+#root-id a:hover {
+    color: #88d5c2;
+}
+#root-id .octocard-m {
+    position: relative;
+    width: 100%;
+    padding: 0 0 10px 0;
+    margin: 0 0 10px 0;
+    border-bottom: 1px solid rgba(207, 207, 207, 0.1);
+}
+#root-id .octocard-m:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+#root-id .octocard-error {
+    display: inline-block;
+    vertical-align: middle;
+    color: #DA4453;
+}
+#root-id .octocard-error a {
+    margin-left: 10px;
+}
+
+/* loader css */
+#root-id .octocard-loading {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #333;
+}
+#root-id .octocard-loading-inner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 80px;
+    height: 20px;
+    margin-left: -40px;
+    margin-top: -10px;
+    overflow: visible;
+}
+#root-id .octocard-loading-0,
+#root-id .octocard-loading-1,
+#root-id .octocard-loading-2 {
+    float: left;
+    width: 20px;
+    height: 100%;
+    margin-right: 10px;
+    background: #5D9CEC;
+}
+#root-id .octocard-loading-2 {
+    margin-right: 0;
+}
+#root-id .octocard-loading-cur {
+    background-color: #88d5c2;
+    -webkit-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    transform: scale(1.2);
+}
+
+/* module/base css */
+#root-id .octocard-m-base {
+   margin: -1em -1em 10px -1em;
+   padding: 0.5em 1em;
+}
+#root-id .octocard-m-base a {
+    display: block;
+}
+
+#root-id .octocard-m-base img {
+    float: left;
+    margin-right: 10px;
+    padding: 1px;
+    width: 44px;
+    height: 44px;
+    border: 1px solid #DDD;
+    -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+    -webkit-transition: border-color 0.5s ease;
+    transition: border-color 0.5s ease;
+}
+#root-id .octocard-m-base a:hover img {
+    border-color: #88d5c2;
+}
+#root-id .octocard-m-base span,
+#root-id .octocard-m-base h1 {
+    overflow: hidden;
+    line-height: 28px;
+    font-size: 20px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    -webkit-transition: color 0.5s ease;
+    transition: color 0.5s ease;
+}
+#root-id .octocard-m-base a:hover h1 {
+    color: #88d5c2;
+}
+#root-id .octocard-m-base .octocard-m-base-noname {
+    line-height: 48px;
+    font-size: 24px;
+}
+#root-id .octocard-m-base span {
+    display: block;
+    font-size: 16px;
+    line-height: 20px;
+}
+/* min base */
+#root-id.octocard-min .octocard-m-base img {
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    border: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+#root-id.octocard-min .octocard-m-base h1 {
+    font-size: 16px;
+    line-height: 20px;
+}
+#root-id.octocard-min .octocard-m-base .octocard-m-base-noname {
+    font-size: 16px;
+    line-height: 36px;
+}
+#root-id.octocard-min .octocard-m-base span {
+    font-size: 14px;
+    line-height: 16px;
+}
+
+/* module/details css */
+#root-id .octocard-m-details li {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+#root-id .octocard-m-details li:before {
+    content: "-";
+    float: left;
+    margin-right: 10px;
+    color: #AAB2BD;
+}
+#root-id .octocard-m-details a {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+/* min details */
+#root-id.octocard-min .octocard-m-details li:before {
+    display: none;
+}
+/* max details */
+#root-id.octocard-max .octocard-m-details li {
+    float: left;
+    margin-right: 2%;
+    width: 48%;
+}
+
+
+/* module/orgs css */
+#root-id .octocard-m-orgs h2 {
+    margin-bottom: 5px;
+}
+#root-id .octocard-m-orgs ul {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    list-style: none;
+}
+#root-id .octocard-m-orgs li {
+    list-style: none;
+    float: left;
+    margin-right: 4px;
+    margin-bottom: 4px;
+}
+#root-id .octocard-m-orgs li:last-child {
+    margin-right: 0;
+}
+#root-id .octocard-m-orgs a {
+    float: left;
+    color: inherit;
+}
+#root-id .octocard-m-orgs img {
+    padding: 1px;
+    width: 32px;
+    height: 32px;
+    border: 1px solid #ddd;
+}
+#root-id .octocard-m-orgs a:hover img {
+    border-color: #88d5c2;
+}
+/* min orgs */
+#root-id.octocard-min .octocard-m-orgs img {
+    padding: 0;
+    width: 24px;
+    height: 24px;
+    border: none;
+}
+
+/* module/repos css */
+#root-id .octocard-m-repos ul {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    list-style: none;
+}
+#root-id .octocard-m-repos li {
+    list-style: none;
+}
+#root-id .octocard-m-repos a {
+    position: relative;
+    display: block;
+    color: inherit;
+}
+#root-id .octocard-m-repos a {
+    width: 100%;
+}
+#root-id .octocard-m-repos a h2,
+#root-id .octocard-m-repos a p {
+    font-size: 14px;
+    margin-right: 50px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+#root-id .octocard-m-repos a:hover h2 {
+    color: #88d5c2;
+    -webkit-transition: color 0.5s ease;
+    transition: color 0.5s ease;
+}
+#root-id .octocard-m-repos a span {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    margin-top: -10.5px;
+    line-height: 1.5;
+    font-size: 14px;
+    color: #999;
+}
+/* min repos */
+#root-id.octocard-min .octocard-m-repos a {
+    margin: 0.15em 0;   /* (1.5 - 1.2) / 2 = 0.15 */
+    line-height: 1.2;
+}
+#root-id.octocard-min .octocard-m-repos p {
+    display: none;
+}
+#root-id.octocard-min .octocard-m-repos h2 {
+    margin-right: 0.25em;
+    display: inline;
+    white-space: initial;
+    word-wrap: break-word;
+}
+#root-id.octocard-min .octocard-m-repos span {
+    display: inline;
+    position: static;
+    margin: 0;
+    font-size: 12px;
+}
+/* max repos */
+#root-id.octocard-max .octocard-m-repos h2 {
+    font-size: 16px;
+}
+#root-id.octocard-max .octocard-m-repos p {
+    white-space: initial;
+}
+
+
+/* module/stats css */
+#root-id .octocard-m-stats ul {
+    margin: 0;
+    padding: 0;
+    height: 42px;
+    overflow: hidden;
+    list-style: none;
+}
+#root-id .octocard-m-stats li,
+#root-id .octocard-m-stats a {
+    float: left;
+    width: 33.33%;
+    list-style: none;
+    color: inherit;
+    text-align: center;
+}
+#root-id .octocard-m-stats a {
+    width: 100%;
+}
+#root-id .octocard-m-stats a strong,
+#root-id .octocard-m-stats a span {
+    display: block;
+    width: 100%;
+    line-height: 1.2;
+    text-align: center;
+}
+#root-id .octocard-m-stats a:hover strong,
+#root-id .octocard-m-stats a:hover span {
+    color: #88d5c2;
+    -webkit-transition: color 0.5s ease;
+    transition: color 0.5s ease;
+}
+#root-id .octocard-m-stats a span {
+    margin-top: -5px;
+    font-size: 12px;
+    color: #999;
+}
+#root-id .octocard-m-stats a strong {
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+}
+/* min stats */
+#root-id.octocard-min .octocard-m-stats ul {
+    height: 37px;
+}
+#root-id.octocard-min .octocard-m-stats a strong {
+    font-size: 24px;
+}
+#root-id.octocard-min .octocard-m-stats li {
+    width: 50%;
+}
+/* max stats */
+#root-id.octocard-max .octocard-m-stats li {
+    width: 25%;
+}
+
+
+/* module/eventsStatis css */
+#root-id .octocard-m-eventsstatis {
+    position: relative;
+}
+#root-id .octocard-m-eventsstatis h2 {
+    margin-bottom: 5px;
+}
+#root-id .octocard-m-eventsstatis-bd {
+    overflow: hidden;
+    width: 100%;
+    height: 80px;
+}
+#root-id .octocard-m-eventsstatis-bar {
+    position: relative;
+    float: right;
+    min-width: 3px;
+    height: 100%;
+}
+#root-id .octocard-m-eventsstatis-bar div {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-indent: -9999px;
+    background-color: #5D9CEC;
+}
+#root-id .octocard-m-eventsstatis-date {
+    overflow: hidden;
+    font-size: 12px;
+    color: #888;
+}
+#root-id .octocard-m-eventsstatis-date-end {
+    float: right;
+}
+/* min eventsstatis */
+#octocard.octocard-min .octocard-m-eventsstatis-bd {
+    height: 48px;
+}
+#octocard.octocard-min .octocard-m-eventsstatis-date {
+    display: none;
+}
+
+
+/* module/footer css */
+#root-id:hover .octocard-footer {
+    display: block;
+}
+#root-id .octocard-footer {
+    position: absolute;
+    bottom: -1px;
+    right: -1px;
+    display: none;
+    padding: 1px 4px;
+    z-index: 1;
+    height: 12px;
+    text-align: center;
+    font-size: 12px;
+    line-height: 12px;
+    border: 1px solid #CCC;
+    border-top-left-radius: 4px;
+}
