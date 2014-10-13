@@ -15,7 +15,7 @@ Easy way? Copy the following html code to your website.
 ```html
 <script
     data-name="your github username"
-    src="http://nodejs.in/octocard/bin/octocard.js"></script>
+    src="http://octocard.in/o.js"></script>
 ```
 
 Advanced way:
@@ -64,7 +64,7 @@ OCTOCARD = {
   // noIsolated: true
 };
 </script>
-<script src="http://nodejs.in/octocard/bin/octocard.js"></script>
+<script src="http://octocard.in/o.js"></script>
 ```
 
 These configs also work as `data-*` attributes.
