@@ -86,11 +86,3 @@ Server part
 ---
 Octocard works on node server. You can use [octocard.in](http://octocard.in/). It's free. But if you want to build your own server, checkout [server part](https://github.com/zmmbreeze/octocard-server).
 
-
-
-
-
-
-
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/zmmbreeze/octocard/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
-
