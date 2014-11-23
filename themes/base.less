@@ -1,21 +1,80 @@
+/* configs */
+@mainPrimaryColor: #4A89DC;
+@mainLightenPrimaryColor: #5D9CEC;
+@mainErrorColor: #DA4453;
+
+/* configs for base element */
+@mainFontColor: #666;
+@mainLightenFontColor: #999;
+@mainLightestFontColor: #EAEAEA;
+@mainDarkenFontColor: #333;
+@mainBorderColor: #CCC;
+@mainLightenBorderColor: #DDD;
+@mainBackgroundColor: #FFF;
+@mainDarkenBackgroundColor: #EFEFEF;
+@mainLinkColor: @mainFontColor;
+@mainHoverLinkColor: @mainPrimaryColor;
+@mainFontFamily: "Helvetica Neue", Arial, Helvetica, sans-serif;
+
+/* configs for all modules' base element */
+@mainModuleTitleColor: @mainDarkenFontColor;
+@mainModuleBorderColor: @mainBorderColor;
+
+/* configs for error module */
+@errorFontColor: @mainErrorColor;
+
+/* configs for loading module */
+@loadingCubeColor: @mainLightenPrimaryColor;
+@loadingCubeHighlightColor: @mainPrimaryColor;
+
+/* configs for base module */
+@baseTitleColor: @mainModuleTitleColor;
+@baseBackgroundColor: @mainDarkenBackgroundColor;
+@baseImgBorderColor: @mainLightenBorderColor;
+@baseImgHoverBorderColor: @mainHoverLinkColor;
+@baseHoverTitleColor: @mainHoverLinkColor;
+
+/* configs for details module */
+@detailsPrefix: "-";
+@detailsPrefixColor: @mainLightestFontColor;
+
+/* configs for orgs module */
+@orgsBorderColor: @mainLightenBorderColor;
+@orgsHoverBorderColor: @mainHoverLinkColor;
+
+/* configs for repos module */
+@reposHoverTitleColor: @mainHoverLinkColor;
+@reposStarColor: @mainLightenFontColor;
+
+/* configs for stats module */
+@statsNumberColor: @mainDarkenFontColor;
+@statsHoverNumberColor: @mainHoverLinkColor;
+@statsTextColor: @mainLightenFontColor;
+@statsHoverTextColor: @mainHoverLinkColor;
+
+/* configs for eventsstatis module */
+@eventsstatisBarColor: @mainLightenPrimaryColor;
+@eventsstatisDateColor: @mainLightenFontColor;
+
+/* configs for footer module */
+@footerBackgroundColor: @mainDarkenBackgroundColor;
+@footerBorderColor: @mainBorderColor;
+
 /* resert css */
 #root-id {
     position: relative;
     padding: 1em;
     min-height: 40px;
-    margin: 0 2px 2px 0;
     display: block;
-    color: #666;
-    font: 14px "Helvetica Neue", Arial, Helvetica, sans-serif;
+    color: @mainFontColor;
+    font: 14px @mainFontFamily;
     text-align: left;
     line-height: 1.5;
-    border: 1px solid #CCC;
-    background-color: #FFF;
+    border: 1px solid @mainBorderColor;
+    background-color: @mainBackgroundColor;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    -webkit-box-shadow: 2px 2px 0 #E6E9ED;
-    box-shadow: 2px 2px 0 #E6E9ED;
 }
 #root-id.octocard-min {
     font-size: 12px;
@@ -45,7 +104,6 @@
 }
 #root-id h1,
 #root-id h2 {
-    color: #333;
     font-weight: bold;
 }
 #root-id li {
@@ -63,13 +121,13 @@
     text-decoration: none;
 }
 #root-id a {
-    color: #666;
+    color: @mainLinkColor;
     text-decoration: none;
     -webkit-transition: color 0.5s ease;
     transition: color 0.5s ease;
 }
 #root-id a:hover {
-    color: #4A89DC;
+    color: @mainHoverLinkColor;
     text-decoration: none;
 }
 #root-id .octocard-m {
@@ -77,17 +135,20 @@
     width: 100%;
     padding: 0 0 10px 0;
     margin: 0 0 10px 0;
-    border-bottom: 1px solid #CCC;
+    border-bottom: 1px solid @mainModuleBorderColor;
 }
 #root-id .octocard-m:last-child {
     margin-bottom: 0;
     padding-bottom: 0;
     border-bottom: none;
 }
+#root-id .octocard-m h2 {
+    color: @mainModuleTitleColor;
+}
 #root-id .octocard-error {
     display: inline-block;
     vertical-align: middle;
-    color: #DA4453;
+    color: @errorFontColor;
 }
 #root-id .octocard-error a {
     margin-left: 10px;
@@ -119,13 +180,13 @@
     width: 20px;
     height: 100%;
     margin-right: 10px;
-    background: #5D9CEC;
+    background: @loadingCubeColor;
 }
 #root-id .octocard-loading-2 {
     margin-right: 0;
 }
 #root-id .octocard-loading-cur {
-    background-color: #4A89DC;
+    background-color: @loadingCubeHighlightColor;
     -webkit-transform: scale(1.2);
     -ms-transform: scale(1.2);
     transform: scale(1.2);
@@ -135,10 +196,7 @@
 #root-id .octocard-m-base {
    margin: -1em -1em 10px -1em;
    padding: 0.5em 1em;
-   background-color: #EAEAEA;
-   background-image: -moz-linear-gradient(#FAFAFA, #EAEAEA);
-   background-image: -webkit-linear-gradient(#FAFAFA, #EAEAEA);
-   background-image: linear-gradient(#fafafa, #EAEAEA);
+   background-color: @baseBackgroundColor;
 }
 #root-id .octocard-m-base a {
     display: block;
@@ -146,20 +204,21 @@
 #root-id .octocard-m-base a:hover {
     text-decoration: none;
 }
+#root-id .octocard-m-base h1 {
+    color: @baseTitleColor;
+}
 #root-id .octocard-m-base img {
     float: left;
     margin-right: 10px;
     padding: 1px;
     width: 44px;
     height: 44px;
-    border: 1px solid #DDD;
-    -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+    border: 1px solid @baseImgBorderColor;
     -webkit-transition: border-color 0.5s ease;
     transition: border-color 0.5s ease;
 }
 #root-id .octocard-m-base a:hover img {
-    border-color: #4A89DC;
+    border-color: @baseImgHoverBorderColor;
 }
 #root-id .octocard-m-base span,
 #root-id .octocard-m-base h1 {
@@ -172,7 +231,7 @@
     transition: color 0.5s ease;
 }
 #root-id .octocard-m-base a:hover h1 {
-    color: #4A89DC;
+    color: @baseHoverTitleColor;
 }
 #root-id .octocard-m-base .octocard-m-base-noname {
     line-height: 48px;
@@ -211,10 +270,10 @@
     text-overflow: ellipsis;
 }
 #root-id .octocard-m-details li:before {
-    content: "-";
+    content: @detailsPrefix;
     float: left;
     margin-right: 10px;
-    color: #AAB2BD;
+    color: @detailsPrefixColor;
 }
 #root-id .octocard-m-details a {
     display: block;
@@ -261,10 +320,10 @@
     padding: 1px;
     width: 32px;
     height: 32px;
-    border: 1px solid #ddd;
+    border: 1px solid @orgsBorderColor;
 }
 #root-id .octocard-m-orgs a:hover img {
-    border-color: #4A89DC;
+    border-color: @orgsHoverBorderColor;
 }
 /* min orgs */
 #root-id.octocard-min .octocard-m-orgs img {
@@ -301,7 +360,7 @@
     text-overflow: ellipsis;
 }
 #root-id .octocard-m-repos a:hover h2 {
-    color: #4A89DC;
+    color: @reposHoverTitleColor;
     -webkit-transition: color 0.5s ease;
     transition: color 0.5s ease;
 }
@@ -312,7 +371,7 @@
     margin-top: -10.5px;
     line-height: 1.5;
     font-size: 14px;
-    color: #999;
+    color: @reposStarColor;
 }
 /* min repos */
 #root-id.octocard-min .octocard-m-repos a {
@@ -372,19 +431,24 @@
 }
 #root-id .octocard-m-stats a:hover strong,
 #root-id .octocard-m-stats a:hover span {
-    color: #4A89DC;
     -webkit-transition: color 0.5s ease;
     transition: color 0.5s ease;
 }
 #root-id .octocard-m-stats a span {
     margin-top: -5px;
     font-size: 12px;
-    color: #999;
+    color: @statsTextColor;
+}
+#root-id .octocard-m-stats a:hover span {
+    color: @statsHoverTextColor;
 }
 #root-id .octocard-m-stats a strong {
     font-size: 28px;
     font-weight: bold;
-    color: #333;
+    color: @statsNumberColor;
+}
+#root-id .octocard-m-stats a:hover strong {
+    color: @statsHoverNumberColor;
 }
 /* min stats */
 #root-id.octocard-min .octocard-m-stats ul {
@@ -426,12 +490,12 @@
     left: 0;
     width: 100%;
     text-indent: -9999px;
-    background-color: #5D9CEC;
+    background-color: @eventsstatisBarColor;
 }
 #root-id .octocard-m-eventsstatis-date {
     overflow: hidden;
     font-size: 12px;
-    color: #888;
+    color: @eventsstatisDateColor;
 }
 #root-id .octocard-m-eventsstatis-date-end {
     float: right;
@@ -460,6 +524,7 @@
     text-align: center;
     font-size: 12px;
     line-height: 12px;
-    background: #EFEFEF;
-    border: 1px solid #CCC;
+    background-color: @footerBackgroundColor;
+    border: 1px solid @footerBorderColor;
 }
+

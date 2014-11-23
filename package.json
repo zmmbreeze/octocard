@@ -24,15 +24,14 @@
     "type": "MIT",
     "url": "https://raw.github.com/zmmbreeze/octocard/master/MIT-LICENTSE.txt"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "grunt": "~0.4.1",
-    "grunt-contrib-uglify": "*",
-    "grunt-contrib-jshint": "*",
-    "grunt-contrib-watch": "*",
+    "grunt-contrib-clean": "*",
     "grunt-contrib-concat": "*",
-    "grunt-contrib-clean": "*"
+    "grunt-contrib-jshint": "*",
+    "grunt-contrib-less": "^0.12.0",
+    "grunt-contrib-uglify": "*",
+    "grunt-contrib-watch": "*"
   }
 }
-
