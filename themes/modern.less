@@ -17,6 +17,7 @@
 
 /* module/base css */
 #root-id .octocard-m-base {
+    margin: -15px -15px 10px;
     width: auto;
 }
 #root-id .octocard-m-base img {
@@ -61,8 +62,9 @@
 /* minimal module/base */
 #root-id.octocard-min .octocard-m-base {
     width: auto;
-    margin-bottom: 1em;
-    padding-bottom: 0;
+    margin: -13px -13px 1em;
+    padding: 0;
+    text-indent: 1em;
 }
 #root-id.octocard-min .octocard-m-base img {
     display: block;
@@ -79,11 +81,18 @@
 /* module/base css */
 #root-id .octocard-m-details {
     position: relative;
-    margin: -1em -1em 10px -1em;
+    margin: -15px -15px 10px;
     padding: 0.5em 1em;
     width: auto;
     background-color: @mainDarkenBackgroundColor;
 }
+#root-id.octocard-min .octocard-m-details {
+    margin: -13px -13px 10px;
+}
+#root-id.octocard-max .octocard-m-details {
+    height: 21px * 3;
+}
+
 
 /* module/orgs css */
 #root-id .octocard-m-orgs img {
