@@ -1,7 +1,39 @@
 @import "base.less";
 
+/* configs */
+@mainPrimaryColor: #4A89DC;
+@mainLightenPrimaryColor: #5D9CEC;
+@mainErrorColor: #DA4453;
+
 /* configs for base element */
-@mainBorderColor: transparent;
+@mainBorderColor: #EFEFEF;
 @mainLightenBorderColor: transparent;
 @mainBackgroundColor: #FFF;
-@mainDarkenBackgroundColor: transparent;
+@mainDarkenBackgroundColor: #F6F6F6;
+
+/* configs for details module */
+@detailsPrefixColor: @mainFontColor;
+
+/* module/base css */
+#root-id .octocard-m-base img {
+    padding: 0;
+    width: 48px;
+    height: 48px;
+    border: none;
+}
+
+/* module/base css */
+#root-id .octocard-m-details {
+   margin: -1em -1em 10px -1em;
+   padding: 0.5em 1em;
+   background-color: @mainDarkenBackgroundColor;
+}
+
+/* module/orgs css */
+#root-id .octocard-m-orgs img {
+    padding: 0;
+    width: 36px;
+    height: 36px;
+    border: none;
+}
+
