@@ -28,6 +28,7 @@ module.exports = function(grunt) {
             },
             dist: {
                 src: [
+                    'bin/themes/<%= theme %>.css',
                     'themes/<%= theme %>.css',
                     'src/util.js',
                     'src/loader.js',
