@@ -26,6 +26,7 @@
 /* configs for loading module */
 @loadingCubeColor: @mainLightenPrimaryColor;
 @loadingCubeHighlightColor: @mainPrimaryColor;
+@loadingBackgroundColor: rgba(255, 255, 255, 0.8);
 
 /* configs for base module */
 @baseTitleColor: @mainModuleTitleColor;
@@ -161,7 +162,7 @@
     left: 0;
     height: 100%;
     width: 100%;
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: @loadingBackgroundColor;
 }
 #root-id .octocard-loading-inner {
     position: absolute;
