@@ -1,0 +1,95 @@
+@import "base.less";
+
+/* configs */
+@mainPrimaryColor: #4A89DC;
+@mainLightenPrimaryColor: #5D9CEC;
+@mainErrorColor: #DA4453;
+
+/* configs for base element */
+@mainBorderColor: #EFEFEF;
+@mainLightenBorderColor: transparent;
+@mainBackgroundColor: #FFF;
+@mainDarkenBackgroundColor: #F6F6F6;
+
+/* configs for details module */
+@detailsPrefixColor: @mainFontColor;
+
+
+/* module/base css */
+#root-id .octocard-m-base {
+    width: auto;
+}
+#root-id .octocard-m-base img {
+    border: none;
+}
+/* middle module/base */
+#root-id.octocard-mid .octocard-m-base {
+    padding: 0;
+    text-align: center;
+}
+#root-id.octocard-mid .octocard-m-base img {
+    float: none;
+    display: inline-block;
+    width: 50%;
+    height: auto;
+    border-radius: 100%;
+}
+/* maxium module/base */
+@baseImgMaxSize: 122px;
+#root-id.octocard-max .octocard-m-base {
+    position: relative;
+    padding: 0 0 0 (@baseImgMaxSize + 14px);
+    overflow: visible;
+}
+#root-id.octocard-max .octocard-m-base img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    padding: 0;
+    width: @baseImgMaxSize;
+    height: @baseImgMaxSize;
+}
+#root-id.octocard-max .octocard-m-base + .octocard-m-details {
+    padding-left: @baseImgMaxSize + 14px;
+}
+#root-id.octocard-max .octocard-m-base + .octocard-m-details li {
+    float: none;
+    width: auto;
+    margin-right: 0;
+}
+/* minimal module/base */
+#root-id.octocard-min .octocard-m-base {
+    width: auto;
+    margin-bottom: 1em;
+    padding-bottom: 0;
+}
+#root-id.octocard-min .octocard-m-base img {
+    display: block;
+    float: none;
+    width: 100%;
+    height: auto;
+    margin-bottom: 1em;
+}
+#root-id.octocard-min .octocard-m-base + .octocard-m-details {
+    padding-top: 0;
+}
+
+
+/* module/base css */
+#root-id .octocard-m-details {
+    position: relative;
+    margin: -1em -1em 10px -1em;
+    padding: 0.5em 1em;
+    width: auto;
+    background-color: @mainDarkenBackgroundColor;
+}
+
+/* module/orgs css */
+#root-id .octocard-m-orgs img {
+    padding: 0;
+    width: 36px;
+    height: 36px;
+    border: none;
+}
+
