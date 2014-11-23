@@ -66,6 +66,7 @@ module.exports = function(grunt) {
         },
         clean: [
             'src/octocard.js',
+            'src/octocard.<%= theme %>.js',
             'bin/themes/<%= theme %>.css'
         ],
         less: {
