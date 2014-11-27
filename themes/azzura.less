@@ -1,0 +1,165 @@
+@import "base.less";
+
+/* configs */
+@mainPrimaryColor: #4A90E2;
+@mainLightenPrimaryColor: #8FBAEC;
+@mainErrorColor: #DA4453;
+
+/* configs for base element */
+@mainFontColor: #888;
+@mainLightenFontColor: #888;
+@mainLightestFontColor: #CCC;
+@mainDarkenFontColor: @mainFontColor;
+
+@mainBorderColor: #EFEFEF;
+@mainLightenBorderColor: transparent;
+@mainBackgroundColor: #FFF;
+@mainDarkenBackgroundColor: @mainPrimaryColor;
+
+/* configs for base module */
+@baseTitleColor: #FFF;
+
+/* configs for details module */
+@detailsPrefixColor: @mainFontColor;
+
+/* configs for stats module */
+@statsNumberColor: @mainPrimaryColor;
+
+/* configs for footer module */
+@footerBackgroundColor: transparent;
+@footerBorderColor: @mainBorderColor;
+
+/* resert css */
+#root-id .octocard-m h2 {
+    font-weight: normal;
+}
+#root-id .octocard-m {
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-top: 10px;
+    margin-left: -1em;
+    margin-right: -1em;
+    margin-bottom: 0;
+}
+#root-id.octocard-min .octocard-m {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+/* module/base css */
+#root-id .octocard-m-base {
+}
+#root-id .octocard-m-base a {
+    padding: 1em 0;
+}
+#root-id .octocard-m-base a::after {
+    content: 'FOLLOW';
+    position: absolute;
+    top: -14px;
+    right: -44px;
+    color: #FFF;
+    background-color: #F5A623;
+    width: 100px;
+    text-align: center;
+    font-size: 12px;
+    border: 1px solid #666;
+    box-sizing: border-box;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+    -webkit-transform-origin: top left;
+    transform-origin: top left;
+}
+#root-id.octocard-min .octocard-m-base a::after {
+    top: -10px;
+    right: -57px;
+    -webkit-transform: rotate(45deg) scale(.75, .75);
+    transform: rotate(45deg) scale(.75, .75);
+}
+#root-id .octocard-m-base img {
+    border-radius: 100%;
+    background: @mainBackgroundColor;
+}
+#root-id .octocard-m-base a:hover h1 {
+    color: @baseTitleColor;
+}
+
+#root-id .octocard-m-base a span,
+#root-id .octocard-m-base a:hover span {
+    color: #EAEAEA;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* module/details css */
+#root-id .octocard-m-details {
+    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAA8CAYAAABxVAqfAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MzhGMzMyOUE2RTQ0MTFFNDg2MkI4QUM3QjI1NjRBRDMiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MzhGMzMyOUI2RTQ0MTFFNDg2MkI4QUM3QjI1NjRBRDMiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpEMjE5NzVFMTZFM0ExMUU0ODYyQjhBQzdCMjU2NEFEMyIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpEMjE5NzVFMjZFM0ExMUU0ODYyQjhBQzdCMjU2NEFEMyIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PrQtusQAAAMXSURBVHjaxJk7aFRBFIZ3dXFRUUPwUdr5CgExJBpBULBTC4sVZMFHISh2gXQ2FkpwG0tB1ASUiCnTaOUDIaIRItH4QNGIjWLci4/V3UXIP/gPXC93Zue1uQM/ubu5k2/OmTMzZ07yjUYj1+a2FNqf/LJQq9VCg4pQH1SG1kOd/Pw/OCCwGxqAevisbYUA1h2GjkL9/GzUCp4WnoMOuHQuOFp5iZYWXUe9yPJ9Yd0T6JgP1NZiAR3zBdpaHBRqCg4ONQG3BdoK3DaoDryxnVAVeBlUMYDOQHugYWg6BPiQ4W40BN2DjkO9HMS46zoW1g4a9v0Qe65zEBPc0QYSB4XwyFy8cz6Kovjna9yVWrUpWhhpttWr0H3oDQdUV1m8hW42aXMaqPRA2XSO++jqBWkSvMpibnM87LeGAHfR1aatA1obAly27CcStS++4DXQTst+txjZXuC9lvMldqzTIYLrp2WfCl3tDR6yeH+Kbg6ynGyi+UcIa12SvXcLmfrE2+WswEuyAjeyAp/ICrwhK/DvrMA9lus+GLgj7XbvCj5r2WcwRKYiwM8s+9jkZlpwFfrmYHXRFyzy4UkHq72uODK4bjj0lZe6bh/wY8fjzrk0IcGvoFFN8n5bk2MVeQORA9htMoj4FWYX9CDlnafQQSaFD6Hv0LoWf1felUagz/So8u4kNodHvBsn26/cvyJaE7oOrbDw6l2olATHd66IyyRtrpfzEibeP0K4af59KglN2zLHNcncSugM9JyunzUAi7h5bbpXV5JXysQhIbyyjfl1qzZic0jMcE5Uy0sE4VvoI8sQF/n9J/6c4LRN60oUqtNJ5/LN0BXoJMsQq+mh8/z9ZMwbkclySivC3FTUQ2q8xowy0jdB76HtzL3/cjAvXcBycxjTFGOEZy5wfaeVrEQ0f3UBm8BTiyuMhX3QHZOqj6qeUWoBVx0Uf3xTHwkf1iy1VI+GyLnqjOKSJTxIsicDqtfBem+wDCZpva6OuVg5B9Vq1ddrIur7eXrF/0Ei9ugdqk0k32w2cwGbKFt18lkkkC9UL84LMAD+2rou4OZaogAAAABJRU5ErkJggg==') right center no-repeat;
+}
+
+/* module/repos css */
+#root-id .octocard-m-repos h2 {
+    font-weight: normal;
+    color: @mainPrimaryColor;
+}
+#root-id.octocard-min .octocard-m-repos span {
+    float: right;
+}
+#root-id.octocard-min .octocard-m-repos a {
+    margin-top: 0.25em;
+    margin-bottom: 0.25em;
+}
+
+/* module/orgs css */
+#root-id .octocard-m-orgs img {
+    width: 34px;
+    height: 34px;
+    padding: 0;
+    border-color: #888;
+    border-radius: 100%;
+}
+
+/* module/stats css */
+#root-id .octocard-m-stats {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+#root-id .octocard-m-stats ul {
+    height: 42px + 10px * 2;
+}
+#root-id .octocard-m-stats li {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-left: -1px;
+    border-left: 1px solid @mainBorderColor;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+#root-id .octocard-m-stats a strong {
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 33px;
+}
+
+#root-id.octocard-min .octocard-m-stats {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+#root-id.octocard-min .octocard-m-stats a strong {
+    font-size: 18px;
+    line-height: 28px;
+}
+#root-id.octocard-min .octocard-m-stats ul {
+    height: 37px + 10px * 2;
+}
+
+/* module/eventsstatis css */
+#root-id .octocard-m-eventsstatis-bd {
+    height: 60px;
+}
+#root-id .octocard-m-eventsstatis-bar div {
+    width: 75%;
+}
+#root-id .octocard-m-eventsstatis-date {
+    display: none;
+}
+#root-id.octocard-min .octocard-m-eventsstatis-bd {
+    height: 36px;
+}
