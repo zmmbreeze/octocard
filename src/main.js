@@ -25,6 +25,9 @@ var Octocard = function (config) {
  *              // module names, default is
  *              // 'base,details,stats,repos,eventsStatis,orgs'
  *              modules: 'base',
+ *              // [optional][string]specify the theme name to be used
+ *              // 'default' as default
+ *              theme: "azzura",
  *              // [optional][number]number of organizations to show
  *              // 'Infinity' as default, show all organizations
  *              orgsNum: -1,
@@ -344,6 +347,7 @@ if (typeof OCTOCARD === 'object') {
     //   <script
     //     data-name="zmmbreeze"
     //     data-modules="base,stats,repos,orgs,eventsStatis"
+    //     data-theme="azzura"
     //     data-reposNum="3"
     //     data-reposIgnored="reponame1,reponame2"
     //     data-orgsNum="2"
@@ -360,6 +364,7 @@ if (typeof OCTOCARD === 'object') {
     autorunConfig = {
         name: '',
         modules: '',
+        theme: '',
         reposNum: '',
         reposIgnored: '',
         orgsNum: '',
