@@ -4,39 +4,26 @@
  * @param {Function} grunt .
  */
 module.exports = function(grunt) {
-    var theme = grunt.option('theme');
-    var suffix = (typeof theme !== 'string') ? '' : ('.' + theme);
+    var dest = grunt.option('dest');
 
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
-        theme: theme || 'default',
-        suffix: suffix,
+        dest: dest || 'bin/',
         concat: {
             options: {
                 separator: '\n',
                 banner: '(function() {\n// This file concat by grunt. \n\n',
-                footer: '\n})();',
-                process: function(src, filepath) {
-                    if (filepath.indexOf('.css') !== -1) {
-                        src = src
-                            .replace(/\r?\n/g, '')
-                            .replace(/'/g, '\\\'');
-                        src = 'var THEME_CSS = \'' + src + '\';';
-                    }
-                    return src;
-                }
+                footer: '\n})();'
             },
             dist: {
                 src: [
-                    'bin/themes/<%= theme %>.css',
-                    'themes/<%= theme %>.css',
                     'src/util.js',
                     'src/loader.js',
                     'src/modules.js',
                     'src/module/*.js',
                     'src/main.js'
                 ],
-                dest: 'src/octocard<%= suffix %>.js'
+                dest: 'src/octocard.js'
             }
         },
         uglify: {
@@ -47,7 +34,7 @@ module.exports = function(grunt) {
             },
             dist: {
                 files: {
-                    'bin/octocard<%= suffix %>.js': ['<%= concat.dist.dest %>']
+                    'bin/octocard.js': ['<%= concat.dist.dest %>']
                 }
             }
         },
@@ -66,18 +53,18 @@ module.exports = function(grunt) {
         },
         clean: [
             'src/octocard.js',
-            'src/octocard.<%= theme %>.js',
-            'bin/themes/<%= theme %>.css'
         ],
         less: {
-            build: {
-                options: {
-                    paths: ['themes'],
-                    cleancss: true
-                },
-                files: {
-                    'bin/themes/<%= theme %>.css': 'themes/<%= theme %>.less'
-                }
+            options: {
+                paths: ['themes'],
+                cleancss: true
+            },
+            files: {
+                expand: true,
+                cwd: 'themes/',
+                src: '*.less',
+                dest: '<%= dest %>/themes/',
+                ext: '.css'
             }
         }
     });
@@ -89,7 +76,8 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-less');
 
-    grunt.registerTask('debug', ['clean', 'jshint', 'less', 'concat']);
-    grunt.registerTask('default', ['jshint', 'less', 'concat', 'uglify', 'clean']);
+    grunt.registerTask('debug', ['clean', 'jshint', 'concat']);
+    grunt.registerTask('default', ['jshint', 'concat', 'uglify', 'clean']);
+    grunt.registerTask('theme', ['less']);
 };
 

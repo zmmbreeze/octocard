@@ -12,7 +12,6 @@
         text-align:center;
     }
     #octocard h1 {
-        // test `noIsolated` config
         color: red;
     }
     #octocard,
@@ -56,17 +55,23 @@
     octocard({
         name: 'zmmbreeze',
         reposNum: 10,
-        noIsolated: true
+        noIsolated: true,
+        theme: 'azzura-black',
+        api: 'http://localhost:8080/api'
     });
 
     octocard({
         element: 'octocard2',
-        name: 'zmmbreeze'
+        name: 'zmmbreeze',
+        theme: 'azzura',
+        api: 'http://localhost:8080/api'
     });
 
     octocard({
         element: 'octocard3',
-        name: 'zmmbreeze'
+        name: 'zmmbreeze',
+        theme: 'base',
+        api: 'http://localhost:8080/api'
     });
     </script>
 </body>

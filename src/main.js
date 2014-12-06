@@ -47,81 +47,86 @@ var Octocard = function (config) {
  *          }
  */
 Octocard.prototype.reload = function (config) {
-    if (this.host) {
+    var that = this;
+    if (that.host) {
         // loaded before
-        this.host.innerHTML = '';
+        that.host.innerHTML = '';
     }
 
     config = config || {};
-    this.config = config;
+    that.config = config;
 
     config.api = config.api || 'http://octocard.in/api';
 
     // setup element & elementId
-    this.element = config.element || 'octocard';
-    if (typeof this.element === 'string') {
-        this.elementId = this.element;
-        this.element = document.getElementById(this.element);
-        if (!this.element) {
-            this.element = document.createElement('div');
-            this.element.id = this.elementId;
-            lastScript.parentNode.insertBefore(this.element, lastScript);
+    that.element = config.element || 'octocard';
+    if (typeof that.element === 'string') {
+        that.elementId = that.element;
+        that.element = document.getElementById(that.element);
+        if (!that.element) {
+            that.element = document.createElement('div');
+            that.element.id = that.elementId;
+            lastScript.parentNode.insertBefore(that.element, lastScript);
         }
     } else {
-        if (this.element.id) {
-            this.elementId = this.element.id;
+        if (that.element.id) {
+            that.elementId = that.element.id;
         } else {
-            this.elementId = 'octocard' + new Date().getTime();
-            this.element.id = this.elementId;
+            that.elementId = 'octocard' + new Date().getTime();
+            that.element.id = that.elementId;
         }
     }
 
-    this.host = this.element;
+    that.host = that.element;
     // create isolated container if needed
     if (!config.noIsolated || config.noIsolated === 'false') {
-        this._createContainer();
+        that._createContainer();
     }
 
-    this._bindSizeClass();
+    that._bindSizeClass();
 
     // setup style
-    if (typeof THEME_CSS === 'undefined') {
-        throw new Error('Theme css not found!');
-    }
-    var style = this.createStyle(THEME_CSS);
-    this.element.appendChild(style);
+    var themeName = config.theme;
+    that.createStyle(themeName, function (styleElement) {
+        that.element.appendChild(styleElement);
 
-    // setup username & type
-    this.username = config.name;
-    // this.type = config.type || 'user';
+        // setup username & type
+        that.username = config.name;
+        // that.type = config.type || 'user';
 
-    // setup modules
-    var moduleNames = config.modules ||
-        'base,details,stats,repos,eventsStatis,orgs';
-    moduleNames = moduleNames.split(',');
-    moduleNames.unshift('footer');
-    this.setupModules(moduleNames);
+        // setup modules
+        var moduleNames = config.modules ||
+            'base,details,stats,repos,eventsStatis,orgs';
+        moduleNames = moduleNames.split(',');
+        moduleNames.unshift('footer');
+        that.setupModules(moduleNames);
+    });
+
 };
 
 /**
  * Show load error message.
  *
- * @param {Array.<string>} moduleNames module names.
+ * @param {Array.<string>=} moduleNames module names.
  */
 Octocard.prototype._showErrorMsg = function (msg, moduleNames) {
     var errorRoot = document.createElement('div');
     errorRoot.className = 'octocard-error';
     errorRoot.innerHTML = msg;
-    var reloadLink = document.createElement('a');
-    reloadLink.href = 'javascript:void(0)';
-    reloadLink.innerHTML = 'Refresh';
-    var that = this;
-    util.bind(reloadLink, 'click', function () {
-        that.element.removeChild(errorRoot);
-        that._updateContainer();
-        that.setupModules(moduleNames);
-    });
-    errorRoot.appendChild(reloadLink);
+
+    if (moduleNames) {
+        var that = this;
+        var reloadLink = document.createElement('a');
+        reloadLink.href = 'javascript:void(0)';
+        reloadLink.innerHTML = 'Refresh';
+        util.bind(reloadLink, 'click', function () {
+            that.element.removeChild(errorRoot);
+            that._updateContainer();
+            that.setupModules(moduleNames);
+        });
+        errorRoot.appendChild(reloadLink);
+    }
+
     this.element.appendChild(errorRoot);
     this._updateContainer();
 };
@@ -159,12 +164,25 @@ Octocard.prototype.appendModHTML = function (name, html) {
 /**
  * create CSS style, and replace '#{id}' to elementId.
  *
- * @param {string} css css text.
+ * @param {string} themeName name of theme.
+ * @param {function(Element)} complete
  * @return {Element} style element.
  */
-Octocard.prototype.createStyle = function (css) {
-    return util.createStyle(
-        util.format(css, '#root-id', '#' + this.elementId)
+Octocard.prototype.createStyle = function (themeName, complete) {
+    var that = this;
+    util.jsonp(
+        that.config.api
+            + '?dataType=theme'
+            + '&name=' + (themeName || ''),
+        function (data) {
+            var styleElement = util.createStyle(
+                util.format(data.css, '#root-id', '#' + that.elementId)
+            );
+            complete(styleElement);
+        },
+        function (msg) {
+            that._showErrorMsg(msg);
+        }
     );
 };
 
