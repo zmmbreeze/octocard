@@ -25,3 +25,7 @@ Changelog
     * Fixed repo style on min style
     * Removed global variable `root`
     * Fixed #17, #18, #19
+- 1.4.0
+    * Completely rebuild themes by less
+    * Add new themes: azzura-black, azzura, base, clean, highcontrast, modern, night
+    * Add new config `theme`
