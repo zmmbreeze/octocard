@@ -37,6 +37,10 @@ OCTOCARD = {
   // You can change the order or remove module if you don't want.
   // modules: 'base,details,stats,repos,orgs,eventsStatis',
 
+  // [optional][string]specify the theme name to be used
+  // 'default' as default
+  // theme: "azzura",
+
   // [optional][number] Number of repos to be shown.
   // `3` as default
   // reposNum: 4,
