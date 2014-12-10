@@ -17,6 +17,7 @@ module.exports = function(grunt) {
             },
             dist: {
                 src: [
+                    'src/autorun.js',
                     'src/util.js',
                     'src/loader.js',
                     'src/modules.js',
