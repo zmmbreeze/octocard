@@ -30,11 +30,15 @@
     #octocard3 {
         width: 480px;
     }
+    [id^=octocard] {
+        float: left;
+            width: 240px;
+    }
     </style>
+    <!--
     <div id="octocard"></div>
     <div id="octocard2"></div>
     <div id="octocard3"></div>
-    <!--
     <script>
     OCTOCARD = {
         name: 'zmmbreeze',
@@ -52,7 +56,18 @@
         data-api="http://localhost:8080/api"
         src="bin/octocard.js"></script>
     -->
+    <script data-name="zmmbreeze" src="bin/octocard.js"></script>
+    <script>
+    OCTOCARD = {
+        name: 'zmmbreeze',
+        reposNum: 3,
+        noIsolated: true,
+        theme: 'night'
+    };
+    </script>
+    <script data-name="zmmbreeze" data-theme="azzura" src="bin/octocard.js"></script>
     <script src="bin/octocard.js"></script>
+    <!--
     <script>
     octocard({
         name: 'zmmbreeze',
@@ -76,5 +91,6 @@
         // api: 'http://localhost:8080/api'
     });
     </script>
+    -->
 </body>
 </html>
