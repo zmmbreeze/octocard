@@ -1,4 +1,6 @@
 // autorun Octocard
+var MARK = 'e3dfd93b0a15118dd0f9c73013a6b2e9';
+var isLoadedBefore = window.octocard && window.octocard.octocard === MARK;
 var autorunConfig;
 // get config from script tag
 // eg:
@@ -16,17 +18,22 @@ var autorunConfig;
 //     src="src/octocard.js"></script>
 var scripts = document.getElementsByTagName('script');
 var lastScript = scripts[scripts.length - 1];
-var useOctocardConfig;
+var hasConfig;              // has config
+var useOctocardConfig;      // use OCTOCARD as config
 if (lastScript && lastScript.getAttribute('data-name')) {
     // Use attribute
     useOctocardConfig = false;
+    hasConfig = true;
 } else if (typeof OCTOCARD === 'object' && OCTOCARD.name) {
     useOctocardConfig = true;
-} else {
-    // No config found.
+    hasConfig = true;
+} else if (isLoadedBefore) {
+    // if no config found and octocard was loaded before
     return;
+} else {
+    // if no config found and octocard not loaded
+    hasConfig = false;
 }
-
 
 autorunConfig = {
     name: '',
@@ -38,7 +45,8 @@ autorunConfig = {
     element: '',
     api: '',
     noIsolated: false,
-    noFooter: false
+    noFooter: false,
+    themeCSS: ''
 };
 for (var key in autorunConfig) {
     if (useOctocardConfig) {
@@ -49,7 +57,7 @@ for (var key in autorunConfig) {
     }
 }
 
-if (window.octocard && typeof window.octocard === 'function') {
+if (hasConfig && isLoadedBefore) {
     // if octocard was included already,
     // then create a new octocard.
     if (!autorunConfig.element && document.getElementById('octocard')) {
@@ -59,3 +67,4 @@ if (window.octocard && typeof window.octocard === 'function') {
     window.octocard(autorunConfig);
     return;
 }
+

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Theme builder</title>
+    <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+    <style>
+    #octocard,
+    #octocard2,
+    #octocard3 {
+        margin-right: 1em !important;
+        margin-bottom: 1em !important;
+        float: left;
+    }
+    #octocard {
+        width: 180px;
+    }
+    #octocard2 {
+        width: 240px;
+    }
+    #octocard3 {
+        width: 480px;
+    }
+    </style>
+</head>
+<body>
+    <div id="octocard"></div>
+    <div id="octocard2"></div>
+    <div id="octocard3"></div>
+
+    <script src="bin/octocard.js"></script>
+    <script>
+    var uname = /name=([^$&]+)/.exec(location.search);
+    var theme = /theme=([^$&]+)/.exec(location.search);
+    uname = uname ? uname[1] : 'zmmbreeze';
+    theme = theme ? theme[1] : 'default';
+
+    var xhr = new XMLHttpRequest();
+    xhr.onload = function (e) {
+        var css = xhr.responseText;
+        if (!css) {
+            alert('Theme file not found!');
+            return;
+        }
+
+        octocard({
+            name: uname,
+            themeCSS: css,
+            element: 'octocard'
+        });
+        octocard({
+            name: uname,
+            themeCSS: css,
+            element: 'octocard2'
+        });
+        octocard({
+            name: uname,
+            themeCSS: css,
+            element: 'octocard3'
+        });
+    };
+    xhr.open('GET', './bin/themes/' + theme + '.css');
+    xhr.send();
+    </script>
+</body>
+</html>

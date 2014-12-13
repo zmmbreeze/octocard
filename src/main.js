@@ -89,8 +89,7 @@ Octocard.prototype.reload = function (config) {
     that._bindSizeClass();
 
     // setup style
-    var themeName = config.theme;
-    that.createStyle(themeName, function (styleElement) {
+    that.createStyle(function (styleElement) {
         that.element.appendChild(styleElement);
 
         // setup username & type
@@ -167,21 +166,32 @@ Octocard.prototype.appendModHTML = function (name, html) {
 /**
  * create CSS style, and replace '#{id}' to elementId.
  *
- * @param {string} themeName name of theme.
  * @param {function(Element)} complete
  * @return {Element} style element.
  */
-Octocard.prototype.createStyle = function (themeName, complete) {
+Octocard.prototype.createStyle = function (complete) {
     var that = this;
+    var themeCSS = that.config.themeCSS;
+    var createStyle = function (css, elementId) {
+        return util.createStyle(
+            util.format(css, '#root-id', '#' + that.elementId)
+        );
+    };
+
+    if (themeCSS) {
+        // use local css
+        complete(createStyle(themeCSS, that.elementId));
+        return;
+    }
+
+    // use remote css
+    var themeName = that.config.theme;
     util.jsonp(
         that.config.api
             + '?dataType=theme'
             + '&name=' + (themeName || ''),
         function (data) {
-            var styleElement = util.createStyle(
-                util.format(data.css, '#root-id', '#' + that.elementId)
-            );
-            complete(styleElement);
+            complete(createStyle(data.css, that.elementId));
         },
         function (msg) {
             that._showErrorMsg(msg);
@@ -335,12 +345,12 @@ Octocard.prototype._bindSizeClass = function () {
 window.octocard = function (config) {
     return new Octocard(config);
 };
+window.octocard.octocard = MARK;
 
-if (autorunConfig.name) {
+if (hasConfig) {
     // `name` is required as config
     new Octocard(autorunConfig);
 }
-
 
 
 
