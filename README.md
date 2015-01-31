@@ -1,5 +1,5 @@
-Octocard
-===
+![Octocard](./images/logo.png)
+
 Highly flexible github info card for every github lover. And it's open source. Please feel free to fork and build your own Octocard.
 
 > Octocard now using a new domain name octocard.in! The old domain was stolen, so for safety concern please update the code like this:
