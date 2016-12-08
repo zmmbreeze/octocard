@@ -26,9 +26,11 @@ Changelog
     * Removed global variable `root`
     * Fixed #17, #18, #19
 - 1.4.0
-    * Completely rebuild themes by less
+    * Rebuild themes by less
     * Add new themes: azzura-black, azzura, base, clean, highcontrast, modern, night
     * Add new config `theme`
 - 1.4.1
     * Added config `themeCSS`
     * Added `theme.html` to make it more easier to build theme;
+- 1.4.2
+    * Support `HTTPS`

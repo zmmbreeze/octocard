@@ -38,7 +38,7 @@ var Octocard = function (config) {
  *              // '' as default
  *              reposIgnored: 'reponame1,reponame2',
  *              // [optional][string]url of jsonp api
- *              // 'http://octocard.in/api' as default
+ *              // 'https://octocard.in/api' as default
  *              api: 'http://your-octocard.com/api',
  *              // [optional][boolean]show footer or not
  *              // 'false' as default
@@ -59,7 +59,7 @@ Octocard.prototype.reload = function (config) {
     config = config || {};
     that.config = config;
 
-    config.api = config.api || 'http://octocard.in/api';
+    config.api = config.api || (location.protocol + '//octocard.in/api');
 
     // setup element & elementId
     that.element = config.element || 'octocard';
@@ -351,8 +351,3 @@ if (hasConfig) {
     // `name` is required as config
     new Octocard(autorunConfig);
 }
-
-
-
-
-

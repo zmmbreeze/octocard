@@ -1,6 +1,6 @@
 {
   "name": "octocard",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "description": "Highly flexible github info card for every github lover.",
   "preferGlobal": true,
   "directories": {
